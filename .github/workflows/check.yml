@@ -87,34 +87,35 @@ jobs:
       - name: Run flutter test
         run: flutter test
 
-  build:
-    strategy:
-      matrix:
-        include:
-          - target: appbundle
-            runs-on: ubuntu-latest
-          - target: ios
-            runs-on: macos-latest
-          - target: web
-            runs-on: ubuntu-latest
-    runs-on: ${{ matrix.runs-on }}
-    timeout-minutes: 30
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}-${{ github.job }}-${{ matrix.target }}-${{ matrix.runs-on }}
-      cancel-in-progress: true
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  # usageを消費しすぎるためコメントアウト
+  # build:
+  #   strategy:
+  #     matrix:
+  #       include:
+  #         - target: appbundle
+  #           runs-on: ubuntu-latest
+  #         - target: ios
+  #           runs-on: macos-latest
+  #         - target: web
+  #           runs-on: ubuntu-latest
+  #   runs-on: ${{ matrix.runs-on }}
+  #   timeout-minutes: 30
+  #   concurrency:
+  #     group: ${{ github.workflow }}-${{ github.ref }}-${{ github.job }}-${{ matrix.target }}-${{ matrix.runs-on }}
+  #     cancel-in-progress: true
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
 
-      - name: Install Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          channel: stable
-          flutter-version: "3.38.9"
-          cache: true
+  #     - name: Install Flutter
+  #       uses: subosito/flutter-action@v2
+  #       with:
+  #         channel: stable
+  #         flutter-version: "3.38.9"
+  #         cache: true
 
-      - name: Run flutter pub get
-        run: flutter pub get
+  #     - name: Run flutter pub get
+  #       run: flutter pub get
 
-      - name: Build APK
-        run: flutter build ${{ matrix.target }}
+  #     - name: Build APK
+  #       run: flutter build ${{ matrix.target }}
