@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:swifty_companion/ui/auth/widgets/signin_screen.dart';
 import 'package:swifty_companion/ui/search/widgets/search_by_login_screen.dart';
