@@ -93,6 +93,14 @@ jobs:
     strategy:
       matrix:
         target: [appbundle, ios, web]
+        runs-on: [ubuntu-latest, macos-latest]
+        include:
+          - target: appbundle
+            runs-on: ubuntu-latest
+          - target: ios
+            runs-on: macos-latest
+          - target: web
+            runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}-${{ github.job }}-${{ matrix.target }}
       cancel-in-progress: true
