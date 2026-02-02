@@ -94,7 +94,7 @@ jobs:
       matrix:
         target: [appbundle, ios, web]
     concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}-${{ github.job }}
+      group: ${{ github.workflow }}-${{ github.ref }}-${{ github.job }}-${{ matrix.target }}
       cancel-in-progress: true
     steps:
       - name: Checkout
