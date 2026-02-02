@@ -86,3 +86,29 @@ jobs:
 
       - name: Run flutter test
         run: flutter test
+
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        target: [appbundle, ios, web]
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}-${{ github.job }}
+      cancel-in-progress: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: "3.38.9"
+          cache: true
+
+      - name: Run flutter pub get
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build ${{ matrix.target }}
