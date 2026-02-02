@@ -88,12 +88,8 @@ jobs:
         run: flutter test
 
   build:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
     strategy:
       matrix:
-        target: [appbundle, ios, web]
-        runs-on: [ubuntu-latest, macos-latest]
         include:
           - target: appbundle
             runs-on: ubuntu-latest
@@ -101,6 +97,8 @@ jobs:
             runs-on: macos-latest
           - target: web
             runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runs-on }}
+    timeout-minutes: 30
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}-${{ github.job }}-${{ matrix.target }}-${{ matrix.runs-on }}
       cancel-in-progress: true
