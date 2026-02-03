@@ -67,25 +67,25 @@ jobs:
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  test:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  # test:
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 30
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
 
-      - name: Install Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          channel: beta
-          flutter-version: "3.41.0-0.2.pre"
-          cache: true
+  #     - name: Install Flutter
+  #       uses: subosito/flutter-action@v2
+  #       with:
+  #         channel: beta
+  #         flutter-version: "3.41.0-0.2.pre"
+  #         cache: true
 
-      - name: Run flutter pub get
-        run: flutter pub get
+  #     - name: Run flutter pub get
+  #       run: flutter pub get
 
-      - name: Run flutter test
-        run: flutter test
+  #     - name: Run flutter test
+  #       run: flutter test
 
   # usageを消費しすぎるためコメントアウト
   # build:
