@@ -3,7 +3,7 @@ import 'package:flutter/widget_previews.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:swifty_companion/data/service/auth_service.dart';
+import 'package:swifty_companion/data/repository/auth_repository.dart';
 import 'package:swifty_companion/theme.dart';
 import 'package:swifty_companion/utils/logger/logger.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -13,10 +13,10 @@ class SigninScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authService = ref.watch(authServiceProvider);
+    final authRepository = ref.watch(authRepositoryProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: AppBar(title: const Text('Sign in to intra')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -24,9 +24,9 @@ class SigninScreen extends ConsumerWidget {
             FilledButton(
               onPressed: () async {
                 try {
-                  final url = authService.getSigninUrl();
+                  final url = authRepository.getSigninUrl();
                   if (url == null) {
-                    context.goNamed('profile');
+                    context.pushNamed('profile');
                     return;
                   }
                   if (!await launchUrl(url)) {
@@ -48,7 +48,7 @@ class SigninScreen extends ConsumerWidget {
   }
 }
 
-@Preview(name: 'LoginScreen Preview', theme: previewTheme)
-Widget loginScreenPreview() {
+@Preview(name: 'SigninScreen Preview', theme: previewTheme)
+Widget signinScreenPreview() {
   return SigninScreen();
 }

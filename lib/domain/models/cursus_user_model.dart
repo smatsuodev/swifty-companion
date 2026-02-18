@@ -1,0 +1,26 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'cursus_user_model.freezed.dart';
+part 'cursus_user_model.g.dart';
+
+@freezed
+abstract class CursusUserModel with _$CursusUserModel {
+  @JsonSerializable(explicitToJson: true)
+  const factory CursusUserModel({
+    required double level,
+    required CursusModel cursus,
+  }) = _CursusUserModel;
+
+  factory CursusUserModel.fromJson(Map<String, Object?> json) =>
+      _$CursusUserModelFromJson(json);
+}
+
+@freezed
+abstract class CursusModel with _$CursusModel {
+  @JsonSerializable(explicitToJson: true)
+  const factory CursusModel({required String name, required String slug}) =
+      _CursusModel;
+
+  factory CursusModel.fromJson(Map<String, Object?> json) =>
+      _$CursusModelFromJson(json);
+}

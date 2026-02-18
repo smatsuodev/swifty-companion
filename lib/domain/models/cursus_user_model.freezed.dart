@@ -1,0 +1,564 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'cursus_user_model.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+// dart format off
+T _$identity<T>(T value) => value;
+
+/// @nodoc
+mixin _$CursusUserModel {
+
+ double get level; CursusModel get cursus;
+/// Create a copy of CursusUserModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CursusUserModelCopyWith<CursusUserModel> get copyWith => _$CursusUserModelCopyWithImpl<CursusUserModel>(this as CursusUserModel, _$identity);
+
+  /// Serializes this CursusUserModel to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CursusUserModel&&(identical(other.level, level) || other.level == level)&&(identical(other.cursus, cursus) || other.cursus == cursus));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,level,cursus);
+
+@override
+String toString() {
+  return 'CursusUserModel(level: $level, cursus: $cursus)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CursusUserModelCopyWith<$Res>  {
+  factory $CursusUserModelCopyWith(CursusUserModel value, $Res Function(CursusUserModel) _then) = _$CursusUserModelCopyWithImpl;
+@useResult
+$Res call({
+ double level, CursusModel cursus
+});
+
+
+$CursusModelCopyWith<$Res> get cursus;
+
+}
+/// @nodoc
+class _$CursusUserModelCopyWithImpl<$Res>
+    implements $CursusUserModelCopyWith<$Res> {
+  _$CursusUserModelCopyWithImpl(this._self, this._then);
+
+  final CursusUserModel _self;
+  final $Res Function(CursusUserModel) _then;
+
+/// Create a copy of CursusUserModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? level = null,Object? cursus = null,}) {
+  return _then(_self.copyWith(
+level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
+as double,cursus: null == cursus ? _self.cursus : cursus // ignore: cast_nullable_to_non_nullable
+as CursusModel,
+  ));
+}
+/// Create a copy of CursusUserModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CursusModelCopyWith<$Res> get cursus {
+  
+  return $CursusModelCopyWith<$Res>(_self.cursus, (value) {
+    return _then(_self.copyWith(cursus: value));
+  });
+}
+}
+
+
+/// Adds pattern-matching-related methods to [CursusUserModel].
+extension CursusUserModelPatterns on CursusUserModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CursusUserModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _CursusUserModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CursusUserModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _CursusUserModel():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CursusUserModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _CursusUserModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double level,  CursusModel cursus)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _CursusUserModel() when $default != null:
+return $default(_that.level,_that.cursus);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double level,  CursusModel cursus)  $default,) {final _that = this;
+switch (_that) {
+case _CursusUserModel():
+return $default(_that.level,_that.cursus);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double level,  CursusModel cursus)?  $default,) {final _that = this;
+switch (_that) {
+case _CursusUserModel() when $default != null:
+return $default(_that.level,_that.cursus);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _CursusUserModel implements CursusUserModel {
+  const _CursusUserModel({required this.level, required this.cursus});
+  factory _CursusUserModel.fromJson(Map<String, dynamic> json) => _$CursusUserModelFromJson(json);
+
+@override final  double level;
+@override final  CursusModel cursus;
+
+/// Create a copy of CursusUserModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CursusUserModelCopyWith<_CursusUserModel> get copyWith => __$CursusUserModelCopyWithImpl<_CursusUserModel>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$CursusUserModelToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CursusUserModel&&(identical(other.level, level) || other.level == level)&&(identical(other.cursus, cursus) || other.cursus == cursus));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,level,cursus);
+
+@override
+String toString() {
+  return 'CursusUserModel(level: $level, cursus: $cursus)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$CursusUserModelCopyWith<$Res> implements $CursusUserModelCopyWith<$Res> {
+  factory _$CursusUserModelCopyWith(_CursusUserModel value, $Res Function(_CursusUserModel) _then) = __$CursusUserModelCopyWithImpl;
+@override @useResult
+$Res call({
+ double level, CursusModel cursus
+});
+
+
+@override $CursusModelCopyWith<$Res> get cursus;
+
+}
+/// @nodoc
+class __$CursusUserModelCopyWithImpl<$Res>
+    implements _$CursusUserModelCopyWith<$Res> {
+  __$CursusUserModelCopyWithImpl(this._self, this._then);
+
+  final _CursusUserModel _self;
+  final $Res Function(_CursusUserModel) _then;
+
+/// Create a copy of CursusUserModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? level = null,Object? cursus = null,}) {
+  return _then(_CursusUserModel(
+level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
+as double,cursus: null == cursus ? _self.cursus : cursus // ignore: cast_nullable_to_non_nullable
+as CursusModel,
+  ));
+}
+
+/// Create a copy of CursusUserModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CursusModelCopyWith<$Res> get cursus {
+  
+  return $CursusModelCopyWith<$Res>(_self.cursus, (value) {
+    return _then(_self.copyWith(cursus: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$CursusModel {
+
+ String get name; String get slug;
+/// Create a copy of CursusModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CursusModelCopyWith<CursusModel> get copyWith => _$CursusModelCopyWithImpl<CursusModel>(this as CursusModel, _$identity);
+
+  /// Serializes this CursusModel to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CursusModel&&(identical(other.name, name) || other.name == name)&&(identical(other.slug, slug) || other.slug == slug));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,name,slug);
+
+@override
+String toString() {
+  return 'CursusModel(name: $name, slug: $slug)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CursusModelCopyWith<$Res>  {
+  factory $CursusModelCopyWith(CursusModel value, $Res Function(CursusModel) _then) = _$CursusModelCopyWithImpl;
+@useResult
+$Res call({
+ String name, String slug
+});
+
+
+
+
+}
+/// @nodoc
+class _$CursusModelCopyWithImpl<$Res>
+    implements $CursusModelCopyWith<$Res> {
+  _$CursusModelCopyWithImpl(this._self, this._then);
+
+  final CursusModel _self;
+  final $Res Function(CursusModel) _then;
+
+/// Create a copy of CursusModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? slug = null,}) {
+  return _then(_self.copyWith(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,slug: null == slug ? _self.slug : slug // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [CursusModel].
+extension CursusModelPatterns on CursusModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CursusModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _CursusModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CursusModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _CursusModel():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CursusModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _CursusModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String slug)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _CursusModel() when $default != null:
+return $default(_that.name,_that.slug);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String slug)  $default,) {final _that = this;
+switch (_that) {
+case _CursusModel():
+return $default(_that.name,_that.slug);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String slug)?  $default,) {final _that = this;
+switch (_that) {
+case _CursusModel() when $default != null:
+return $default(_that.name,_that.slug);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _CursusModel implements CursusModel {
+  const _CursusModel({required this.name, required this.slug});
+  factory _CursusModel.fromJson(Map<String, dynamic> json) => _$CursusModelFromJson(json);
+
+@override final  String name;
+@override final  String slug;
+
+/// Create a copy of CursusModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CursusModelCopyWith<_CursusModel> get copyWith => __$CursusModelCopyWithImpl<_CursusModel>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$CursusModelToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CursusModel&&(identical(other.name, name) || other.name == name)&&(identical(other.slug, slug) || other.slug == slug));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,name,slug);
+
+@override
+String toString() {
+  return 'CursusModel(name: $name, slug: $slug)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$CursusModelCopyWith<$Res> implements $CursusModelCopyWith<$Res> {
+  factory _$CursusModelCopyWith(_CursusModel value, $Res Function(_CursusModel) _then) = __$CursusModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String name, String slug
+});
+
+
+
+
+}
+/// @nodoc
+class __$CursusModelCopyWithImpl<$Res>
+    implements _$CursusModelCopyWith<$Res> {
+  __$CursusModelCopyWithImpl(this._self, this._then);
+
+  final _CursusModel _self;
+  final $Res Function(_CursusModel) _then;
+
+/// Create a copy of CursusModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? slug = null,}) {
+  return _then(_CursusModel(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,slug: null == slug ? _self.slug : slug // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on
