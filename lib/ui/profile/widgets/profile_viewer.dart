@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:swifty_companion/domain/models/profile_model.dart';
 import 'package:swifty_companion/ui/profile/widgets/level_indicator.dart';
+import 'package:collection/collection.dart';
 
 class ProfileViewer extends HookConsumerWidget {
   final ProfileModel profile;
@@ -13,6 +14,14 @@ class ProfileViewer extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final mediaQuery = MediaQuery.of(context);
     final cursusSlug = useState(profile.cursusUsers.firstOrNull?.cursus.slug);
+    final selectedTitleId = profile.titlesUsers
+        .firstWhereOrNull((u) => u.selected)
+        ?.title_id;
+
+    final selectedTitle = profile.titles
+        .firstWhereOrNull((t) => t.id == selectedTitleId)
+        ?.name
+        .replaceAll('%login', profile.login);
 
     return Column(
       mainAxisAlignment: .center,
@@ -22,7 +31,15 @@ class ProfileViewer extends HookConsumerWidget {
           radius: mediaQuery.size.width * 0.15,
           backgroundImage: NetworkImage(profile.image.link),
         ),
-        Text(profile.login, style: TextStyle(fontSize: 24)),
+        Column(
+          children: [
+            Text(profile.displayName, style: TextStyle(fontSize: 24)),
+            Text(
+              selectedTitle ?? profile.login,
+              style: TextStyle(fontSize: 14),
+            ),
+          ],
+        ),
         SizedBox(
           width: mediaQuery.size.width * 0.75,
           child: Column(
