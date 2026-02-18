@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:swifty_companion/data/service/auth_service.dart';
 import 'package:swifty_companion/theme.dart';
+import 'package:swifty_companion/utils/logger/logger.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SigninScreen extends ConsumerWidget {
+  const SigninScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final authService = ref.watch(authServiceProvider);
+
     return Scaffold(
       appBar: AppBar(title: const Text('Login')),
       body: Center(
@@ -15,7 +22,23 @@ class LoginScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FilledButton(
-              onPressed: _launchOAuthPage,
+              onPressed: () async {
+                try {
+                  final url = authService.getSigninUrl();
+                  if (url == null) {
+                    context.goNamed('profile');
+                    return;
+                  }
+                  if (!await launchUrl(url)) {
+                    throw Exception('Could not launch $url');
+                  }
+                } catch (e) {
+                  this.logger.e('failed to launch URL: $e');
+                  Fluttertoast.showToast(
+                    msg: 'Failed to launch browser. Please try again.',
+                  );
+                }
+              },
               child: const Text('SIGN IN'),
             ),
           ],
@@ -23,19 +46,9 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-
-  Future<void> _launchOAuthPage() async {
-    final Uri _url = Uri.parse(
-      'https://api.intra.42.fr/oauth/authorize?client_id=u-s4t2ud-3cf412bec1db5f725cbdd061f55deba1ff6ed3453e95f35ef9034c29a4df03b7&redirect_uri=smatsuoswiftycompanion%3A%2F%2Fsmatsuo.swifty.companion%2Foauth-granted&response_type=code',
-    );
-
-    if (!await launchUrl(_url)) {
-      throw Exception('Could not launch $_url');
-    }
-  }
 }
 
 @Preview(name: 'LoginScreen Preview', theme: previewTheme)
 Widget loginScreenPreview() {
-  return LoginScreen();
+  return SigninScreen();
 }

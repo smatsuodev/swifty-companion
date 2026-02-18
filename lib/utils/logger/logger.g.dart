@@ -47,4 +47,4 @@ final class LoggerProvider extends $FunctionalProvider<Logger, Logger, Logger>
   }
 }
 
-String _$loggerHash() => r'9b7c6dcb22514112960f4332ac97e733b22517a1';
+String _$loggerHash() => r'22b6fd0010a2ed20a121173f24750955f817079e';
