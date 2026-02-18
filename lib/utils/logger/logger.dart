@@ -9,7 +9,7 @@ Logger logger(Ref ref) => Logger(printer: _LogoutOutputWithTag('AppLogger'));
 
 extension LoggerForConsumerStatefulWidgetExt on ConsumerStatefulWidget {
   Logger get logger =>
-      Logger(printer: _LogoutOutputWithTag(this.runtimeType.toString()));
+      Logger(printer: _LogoutOutputWithTag(runtimeType.toString()));
 }
 
 class _LogoutOutputWithTag extends LogPrinter {
