@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:swifty_companion/domain/models/cursus_user_model.dart';
 
-class LevelIndicator extends HookWidget {
+class LevelIndicator extends StatelessWidget {
   final List<CursusUserModel> cursusUsers;
+  final String? cursusSlug;
+  final Function(String?) onCursusChanged;
 
-  const LevelIndicator({super.key, required this.cursusUsers});
+  const LevelIndicator({
+    super.key,
+    required this.cursusUsers,
+    required this.cursusSlug,
+    required this.onCursusChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final cursusSlug = useState(cursusUsers.firstOrNull?.cursus.slug);
     final cursus = cursusUsers.firstWhere(
-      (cu) => cu.cursus.slug == cursusSlug.value,
+      (cu) => cu.cursus.slug == cursusSlug,
       orElse: () => cursusUsers.first,
     );
     final cursusLevelInt = cursus.level.floor();
@@ -40,10 +45,10 @@ class LevelIndicator extends HookWidget {
                         '${(cursusLevelDecimal * 100).toStringAsFixed(0)}%',
                         style: TextStyle(fontSize: 16, fontWeight: .bold),
                       ),
-                      if (cursusSlug.value != null)
+                      if (cursusSlug != null)
                         DropdownButtonHideUnderline(
                           child: DropdownButton(
-                            value: cursusSlug.value,
+                            value: cursusSlug,
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: .bold,
@@ -57,9 +62,7 @@ class LevelIndicator extends HookWidget {
                                   ),
                                 )
                                 .toList(),
-                            onChanged: (s) {
-                              cursusSlug.value = s;
-                            },
+                            onChanged: onCursusChanged,
                           ),
                         ),
                     ],

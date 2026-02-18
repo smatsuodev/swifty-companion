@@ -65,6 +65,7 @@ class AuthRepository {
   }
 
   Future<http.Response> requestAuthorizedData(String uri) async {
+    _logger.d('accessToken: $_accessToken');
     if (_accessToken == null) {
       _logger.e('No access token found. User might not be signed in.');
       throw Exception('No access token found');
