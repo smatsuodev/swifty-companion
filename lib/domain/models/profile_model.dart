@@ -14,8 +14,9 @@ abstract class ProfileModel with _$ProfileModel {
     @JsonKey(name: 'cursus_users') required List<CursusUserModel> cursusUsers,
     required int wallet,
     @JsonKey(name: 'correction_point') required int correctionPoint,
-    @JsonKey(name: 'titles_users') required List<ProfileTitlesUser> titlesUsers,
-    required List<ProfileTitle> titles,
+    @JsonKey(name: 'titles_users')
+    required List<ProfileTitlesUserModel> titlesUsers,
+    required List<ProfileTitleModel> titles,
   }) = _ProfileModel;
 
   factory ProfileModel.fromJson(Map<String, Object?> json) =>
@@ -23,25 +24,25 @@ abstract class ProfileModel with _$ProfileModel {
 }
 
 @freezed
-abstract class ProfileTitle with _$ProfileTitle {
+abstract class ProfileTitleModel with _$ProfileTitleModel {
   @JsonSerializable(explicitToJson: true)
-  const factory ProfileTitle({required int id, required String name}) =
+  const factory ProfileTitleModel({required int id, required String name}) =
       _ProfileTitle;
 
-  factory ProfileTitle.fromJson(Map<String, Object?> json) =>
-      _$ProfileTitleFromJson(json);
+  factory ProfileTitleModel.fromJson(Map<String, Object?> json) =>
+      _$ProfileTitleModelFromJson(json);
 }
 
 @freezed
-abstract class ProfileTitlesUser with _$ProfileTitlesUser {
+abstract class ProfileTitlesUserModel with _$ProfileTitlesUserModel {
   @JsonSerializable(explicitToJson: true)
-  const factory ProfileTitlesUser({
+  const factory ProfileTitlesUserModel({
     required bool selected,
     required int title_id,
   }) = _ProfileTitlesUser;
 
-  factory ProfileTitlesUser.fromJson(Map<String, Object?> json) =>
-      _$ProfileTitlesUserFromJson(json);
+  factory ProfileTitlesUserModel.fromJson(Map<String, Object?> json) =>
+      _$ProfileTitlesUserModelFromJson(json);
 }
 
 @freezed

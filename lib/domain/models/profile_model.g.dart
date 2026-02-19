@@ -17,10 +17,12 @@ _ProfileModel _$ProfileModelFromJson(Map<String, dynamic> json) =>
       wallet: (json['wallet'] as num).toInt(),
       correctionPoint: (json['correction_point'] as num).toInt(),
       titlesUsers: (json['titles_users'] as List<dynamic>)
-          .map((e) => ProfileTitlesUser.fromJson(e as Map<String, dynamic>))
+          .map(
+            (e) => ProfileTitlesUserModel.fromJson(e as Map<String, dynamic>),
+          )
           .toList(),
       titles: (json['titles'] as List<dynamic>)
-          .map((e) => ProfileTitle.fromJson(e as Map<String, dynamic>))
+          .map((e) => ProfileTitleModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

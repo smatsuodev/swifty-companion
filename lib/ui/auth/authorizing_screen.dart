@@ -5,11 +5,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:swifty_companion/data/repository/auth_repository.dart';
 import 'package:swifty_companion/utils/logger/logger.dart';
 
-class AuthorizedScope extends ConsumerWidget {
-  final Widget child;
+class AuthorizingScreen extends ConsumerWidget {
   final String? code;
 
-  const AuthorizedScope({super.key, required this.child, required this.code});
+  const AuthorizingScreen({super.key, required this.code});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -36,7 +35,12 @@ class AuthorizedScope extends ConsumerWidget {
             body: Center(child: CircularProgressIndicator()),
           );
         }
-        return child;
+
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          ctx.goNamed('profile');
+        });
+
+        return const Scaffold(body: Center(child: CircularProgressIndicator()));
       },
     );
   }

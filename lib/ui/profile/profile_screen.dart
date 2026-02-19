@@ -7,17 +7,23 @@ import 'package:swifty_companion/data/repository/auth_repository.dart';
 import 'package:swifty_companion/data/repository/profile_repository.dart';
 import 'package:swifty_companion/theme.dart';
 import 'package:swifty_companion/ui/profile/widgets/profile_viewer.dart';
+import 'package:swifty_companion/utils/logger/logger.dart';
 
 class ProfileScreen extends HookConsumerWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Your Profile')),
-      body: Padding(
-        padding: const EdgeInsets.all(32.0),
-        child: Center(
+    this.logger.i('building profile screen');
+    return PopScope(
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) {
+          ref.watch(authRepositoryProvider).signOut();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(title: const Text('Your Profile')),
+        body: Center(
           child: FutureBuilder(
             future: ref.watch(profileRepositoryProvider).fetchProfile(),
             builder: (context, asyncSnapshot) {
@@ -29,6 +35,7 @@ class ProfileScreen extends HookConsumerWidget {
                     msg: 'Session expired. Please sign in again.',
                   );
                   WidgetsBinding.instance.addPostFrameCallback((_) {
+                    ref.watch(authRepositoryProvider).signOut();
                     context.goNamed('home');
                   });
                 }

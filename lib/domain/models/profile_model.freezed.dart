@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProfileModel {
 
- String get login;@JsonKey(name: 'displayname') String get displayName; ProfileImageModel get image;@JsonKey(name: 'cursus_users') List<CursusUserModel> get cursusUsers; int get wallet;@JsonKey(name: 'correction_point') int get correctionPoint;@JsonKey(name: 'titles_users') List<ProfileTitlesUser> get titlesUsers; List<ProfileTitle> get titles;
+ String get login;@JsonKey(name: 'displayname') String get displayName; ProfileImageModel get image;@JsonKey(name: 'cursus_users') List<CursusUserModel> get cursusUsers; int get wallet;@JsonKey(name: 'correction_point') int get correctionPoint;@JsonKey(name: 'titles_users') List<ProfileTitlesUserModel> get titlesUsers; List<ProfileTitleModel> get titles;
 /// Create a copy of ProfileModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $ProfileModelCopyWith<$Res>  {
   factory $ProfileModelCopyWith(ProfileModel value, $Res Function(ProfileModel) _then) = _$ProfileModelCopyWithImpl;
 @useResult
 $Res call({
- String login,@JsonKey(name: 'displayname') String displayName, ProfileImageModel image,@JsonKey(name: 'cursus_users') List<CursusUserModel> cursusUsers, int wallet,@JsonKey(name: 'correction_point') int correctionPoint,@JsonKey(name: 'titles_users') List<ProfileTitlesUser> titlesUsers, List<ProfileTitle> titles
+ String login,@JsonKey(name: 'displayname') String displayName, ProfileImageModel image,@JsonKey(name: 'cursus_users') List<CursusUserModel> cursusUsers, int wallet,@JsonKey(name: 'correction_point') int correctionPoint,@JsonKey(name: 'titles_users') List<ProfileTitlesUserModel> titlesUsers, List<ProfileTitleModel> titles
 });
 
 
@@ -74,8 +74,8 @@ as ProfileImageModel,cursusUsers: null == cursusUsers ? _self.cursusUsers : curs
 as List<CursusUserModel>,wallet: null == wallet ? _self.wallet : wallet // ignore: cast_nullable_to_non_nullable
 as int,correctionPoint: null == correctionPoint ? _self.correctionPoint : correctionPoint // ignore: cast_nullable_to_non_nullable
 as int,titlesUsers: null == titlesUsers ? _self.titlesUsers : titlesUsers // ignore: cast_nullable_to_non_nullable
-as List<ProfileTitlesUser>,titles: null == titles ? _self.titles : titles // ignore: cast_nullable_to_non_nullable
-as List<ProfileTitle>,
+as List<ProfileTitlesUserModel>,titles: null == titles ? _self.titles : titles // ignore: cast_nullable_to_non_nullable
+as List<ProfileTitleModel>,
   ));
 }
 /// Create a copy of ProfileModel
@@ -169,7 +169,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String login, @JsonKey(name: 'displayname')  String displayName,  ProfileImageModel image, @JsonKey(name: 'cursus_users')  List<CursusUserModel> cursusUsers,  int wallet, @JsonKey(name: 'correction_point')  int correctionPoint, @JsonKey(name: 'titles_users')  List<ProfileTitlesUser> titlesUsers,  List<ProfileTitle> titles)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String login, @JsonKey(name: 'displayname')  String displayName,  ProfileImageModel image, @JsonKey(name: 'cursus_users')  List<CursusUserModel> cursusUsers,  int wallet, @JsonKey(name: 'correction_point')  int correctionPoint, @JsonKey(name: 'titles_users')  List<ProfileTitlesUserModel> titlesUsers,  List<ProfileTitleModel> titles)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProfileModel() when $default != null:
 return $default(_that.login,_that.displayName,_that.image,_that.cursusUsers,_that.wallet,_that.correctionPoint,_that.titlesUsers,_that.titles);case _:
@@ -190,7 +190,7 @@ return $default(_that.login,_that.displayName,_that.image,_that.cursusUsers,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String login, @JsonKey(name: 'displayname')  String displayName,  ProfileImageModel image, @JsonKey(name: 'cursus_users')  List<CursusUserModel> cursusUsers,  int wallet, @JsonKey(name: 'correction_point')  int correctionPoint, @JsonKey(name: 'titles_users')  List<ProfileTitlesUser> titlesUsers,  List<ProfileTitle> titles)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String login, @JsonKey(name: 'displayname')  String displayName,  ProfileImageModel image, @JsonKey(name: 'cursus_users')  List<CursusUserModel> cursusUsers,  int wallet, @JsonKey(name: 'correction_point')  int correctionPoint, @JsonKey(name: 'titles_users')  List<ProfileTitlesUserModel> titlesUsers,  List<ProfileTitleModel> titles)  $default,) {final _that = this;
 switch (_that) {
 case _ProfileModel():
 return $default(_that.login,_that.displayName,_that.image,_that.cursusUsers,_that.wallet,_that.correctionPoint,_that.titlesUsers,_that.titles);case _:
@@ -210,7 +210,7 @@ return $default(_that.login,_that.displayName,_that.image,_that.cursusUsers,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String login, @JsonKey(name: 'displayname')  String displayName,  ProfileImageModel image, @JsonKey(name: 'cursus_users')  List<CursusUserModel> cursusUsers,  int wallet, @JsonKey(name: 'correction_point')  int correctionPoint, @JsonKey(name: 'titles_users')  List<ProfileTitlesUser> titlesUsers,  List<ProfileTitle> titles)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String login, @JsonKey(name: 'displayname')  String displayName,  ProfileImageModel image, @JsonKey(name: 'cursus_users')  List<CursusUserModel> cursusUsers,  int wallet, @JsonKey(name: 'correction_point')  int correctionPoint, @JsonKey(name: 'titles_users')  List<ProfileTitlesUserModel> titlesUsers,  List<ProfileTitleModel> titles)?  $default,) {final _that = this;
 switch (_that) {
 case _ProfileModel() when $default != null:
 return $default(_that.login,_that.displayName,_that.image,_that.cursusUsers,_that.wallet,_that.correctionPoint,_that.titlesUsers,_that.titles);case _:
@@ -225,7 +225,7 @@ return $default(_that.login,_that.displayName,_that.image,_that.cursusUsers,_tha
 
 @JsonSerializable(explicitToJson: true)
 class _ProfileModel implements ProfileModel {
-  const _ProfileModel({required this.login, @JsonKey(name: 'displayname') required this.displayName, required this.image, @JsonKey(name: 'cursus_users') required final  List<CursusUserModel> cursusUsers, required this.wallet, @JsonKey(name: 'correction_point') required this.correctionPoint, @JsonKey(name: 'titles_users') required final  List<ProfileTitlesUser> titlesUsers, required final  List<ProfileTitle> titles}): _cursusUsers = cursusUsers,_titlesUsers = titlesUsers,_titles = titles;
+  const _ProfileModel({required this.login, @JsonKey(name: 'displayname') required this.displayName, required this.image, @JsonKey(name: 'cursus_users') required final  List<CursusUserModel> cursusUsers, required this.wallet, @JsonKey(name: 'correction_point') required this.correctionPoint, @JsonKey(name: 'titles_users') required final  List<ProfileTitlesUserModel> titlesUsers, required final  List<ProfileTitleModel> titles}): _cursusUsers = cursusUsers,_titlesUsers = titlesUsers,_titles = titles;
   factory _ProfileModel.fromJson(Map<String, dynamic> json) => _$ProfileModelFromJson(json);
 
 @override final  String login;
@@ -240,15 +240,15 @@ class _ProfileModel implements ProfileModel {
 
 @override final  int wallet;
 @override@JsonKey(name: 'correction_point') final  int correctionPoint;
- final  List<ProfileTitlesUser> _titlesUsers;
-@override@JsonKey(name: 'titles_users') List<ProfileTitlesUser> get titlesUsers {
+ final  List<ProfileTitlesUserModel> _titlesUsers;
+@override@JsonKey(name: 'titles_users') List<ProfileTitlesUserModel> get titlesUsers {
   if (_titlesUsers is EqualUnmodifiableListView) return _titlesUsers;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_titlesUsers);
 }
 
- final  List<ProfileTitle> _titles;
-@override List<ProfileTitle> get titles {
+ final  List<ProfileTitleModel> _titles;
+@override List<ProfileTitleModel> get titles {
   if (_titles is EqualUnmodifiableListView) return _titles;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_titles);
@@ -288,7 +288,7 @@ abstract mixin class _$ProfileModelCopyWith<$Res> implements $ProfileModelCopyWi
   factory _$ProfileModelCopyWith(_ProfileModel value, $Res Function(_ProfileModel) _then) = __$ProfileModelCopyWithImpl;
 @override @useResult
 $Res call({
- String login,@JsonKey(name: 'displayname') String displayName, ProfileImageModel image,@JsonKey(name: 'cursus_users') List<CursusUserModel> cursusUsers, int wallet,@JsonKey(name: 'correction_point') int correctionPoint,@JsonKey(name: 'titles_users') List<ProfileTitlesUser> titlesUsers, List<ProfileTitle> titles
+ String login,@JsonKey(name: 'displayname') String displayName, ProfileImageModel image,@JsonKey(name: 'cursus_users') List<CursusUserModel> cursusUsers, int wallet,@JsonKey(name: 'correction_point') int correctionPoint,@JsonKey(name: 'titles_users') List<ProfileTitlesUserModel> titlesUsers, List<ProfileTitleModel> titles
 });
 
 
@@ -314,8 +314,8 @@ as ProfileImageModel,cursusUsers: null == cursusUsers ? _self._cursusUsers : cur
 as List<CursusUserModel>,wallet: null == wallet ? _self.wallet : wallet // ignore: cast_nullable_to_non_nullable
 as int,correctionPoint: null == correctionPoint ? _self.correctionPoint : correctionPoint // ignore: cast_nullable_to_non_nullable
 as int,titlesUsers: null == titlesUsers ? _self._titlesUsers : titlesUsers // ignore: cast_nullable_to_non_nullable
-as List<ProfileTitlesUser>,titles: null == titles ? _self._titles : titles // ignore: cast_nullable_to_non_nullable
-as List<ProfileTitle>,
+as List<ProfileTitlesUserModel>,titles: null == titles ? _self._titles : titles // ignore: cast_nullable_to_non_nullable
+as List<ProfileTitleModel>,
   ));
 }
 
@@ -331,24 +331,31 @@ $ProfileImageModelCopyWith<$Res> get image {
 }
 }
 
+ProfileTitleModel _$ProfileTitleModelFromJson(
+  Map<String, dynamic> json
+) {
+    return _ProfileTitle.fromJson(
+      json
+    );
+}
 
 /// @nodoc
-mixin _$ProfileTitle {
+mixin _$ProfileTitleModel {
 
  int get id; String get name;
-/// Create a copy of ProfileTitle
+/// Create a copy of ProfileTitleModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ProfileTitleCopyWith<ProfileTitle> get copyWith => _$ProfileTitleCopyWithImpl<ProfileTitle>(this as ProfileTitle, _$identity);
+$ProfileTitleModelCopyWith<ProfileTitleModel> get copyWith => _$ProfileTitleModelCopyWithImpl<ProfileTitleModel>(this as ProfileTitleModel, _$identity);
 
-  /// Serializes this ProfileTitle to a JSON map.
+  /// Serializes this ProfileTitleModel to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileTitle&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileTitleModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -357,15 +364,15 @@ int get hashCode => Object.hash(runtimeType,id,name);
 
 @override
 String toString() {
-  return 'ProfileTitle(id: $id, name: $name)';
+  return 'ProfileTitleModel(id: $id, name: $name)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ProfileTitleCopyWith<$Res>  {
-  factory $ProfileTitleCopyWith(ProfileTitle value, $Res Function(ProfileTitle) _then) = _$ProfileTitleCopyWithImpl;
+abstract mixin class $ProfileTitleModelCopyWith<$Res>  {
+  factory $ProfileTitleModelCopyWith(ProfileTitleModel value, $Res Function(ProfileTitleModel) _then) = _$ProfileTitleModelCopyWithImpl;
 @useResult
 $Res call({
  int id, String name
@@ -376,14 +383,14 @@ $Res call({
 
 }
 /// @nodoc
-class _$ProfileTitleCopyWithImpl<$Res>
-    implements $ProfileTitleCopyWith<$Res> {
-  _$ProfileTitleCopyWithImpl(this._self, this._then);
+class _$ProfileTitleModelCopyWithImpl<$Res>
+    implements $ProfileTitleModelCopyWith<$Res> {
+  _$ProfileTitleModelCopyWithImpl(this._self, this._then);
 
-  final ProfileTitle _self;
-  final $Res Function(ProfileTitle) _then;
+  final ProfileTitleModel _self;
+  final $Res Function(ProfileTitleModel) _then;
 
-/// Create a copy of ProfileTitle
+/// Create a copy of ProfileTitleModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,}) {
   return _then(_self.copyWith(
@@ -396,8 +403,8 @@ as String,
 }
 
 
-/// Adds pattern-matching-related methods to [ProfileTitle].
-extension ProfileTitlePatterns on ProfileTitle {
+/// Adds pattern-matching-related methods to [ProfileTitleModel].
+extension ProfileTitleModelPatterns on ProfileTitleModel {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -529,14 +536,14 @@ return $default(_that.id,_that.name);case _:
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _ProfileTitle implements ProfileTitle {
+class _ProfileTitle implements ProfileTitleModel {
   const _ProfileTitle({required this.id, required this.name});
   factory _ProfileTitle.fromJson(Map<String, dynamic> json) => _$ProfileTitleFromJson(json);
 
 @override final  int id;
 @override final  String name;
 
-/// Create a copy of ProfileTitle
+/// Create a copy of ProfileTitleModel
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -558,14 +565,14 @@ int get hashCode => Object.hash(runtimeType,id,name);
 
 @override
 String toString() {
-  return 'ProfileTitle(id: $id, name: $name)';
+  return 'ProfileTitleModel(id: $id, name: $name)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ProfileTitleCopyWith<$Res> implements $ProfileTitleCopyWith<$Res> {
+abstract mixin class _$ProfileTitleCopyWith<$Res> implements $ProfileTitleModelCopyWith<$Res> {
   factory _$ProfileTitleCopyWith(_ProfileTitle value, $Res Function(_ProfileTitle) _then) = __$ProfileTitleCopyWithImpl;
 @override @useResult
 $Res call({
@@ -584,7 +591,7 @@ class __$ProfileTitleCopyWithImpl<$Res>
   final _ProfileTitle _self;
   final $Res Function(_ProfileTitle) _then;
 
-/// Create a copy of ProfileTitle
+/// Create a copy of ProfileTitleModel
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,}) {
   return _then(_ProfileTitle(
@@ -597,24 +604,31 @@ as String,
 
 }
 
+ProfileTitlesUserModel _$ProfileTitlesUserModelFromJson(
+  Map<String, dynamic> json
+) {
+    return _ProfileTitlesUser.fromJson(
+      json
+    );
+}
 
 /// @nodoc
-mixin _$ProfileTitlesUser {
+mixin _$ProfileTitlesUserModel {
 
  bool get selected; int get title_id;
-/// Create a copy of ProfileTitlesUser
+/// Create a copy of ProfileTitlesUserModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ProfileTitlesUserCopyWith<ProfileTitlesUser> get copyWith => _$ProfileTitlesUserCopyWithImpl<ProfileTitlesUser>(this as ProfileTitlesUser, _$identity);
+$ProfileTitlesUserModelCopyWith<ProfileTitlesUserModel> get copyWith => _$ProfileTitlesUserModelCopyWithImpl<ProfileTitlesUserModel>(this as ProfileTitlesUserModel, _$identity);
 
-  /// Serializes this ProfileTitlesUser to a JSON map.
+  /// Serializes this ProfileTitlesUserModel to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileTitlesUser&&(identical(other.selected, selected) || other.selected == selected)&&(identical(other.title_id, title_id) || other.title_id == title_id));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileTitlesUserModel&&(identical(other.selected, selected) || other.selected == selected)&&(identical(other.title_id, title_id) || other.title_id == title_id));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -623,15 +637,15 @@ int get hashCode => Object.hash(runtimeType,selected,title_id);
 
 @override
 String toString() {
-  return 'ProfileTitlesUser(selected: $selected, title_id: $title_id)';
+  return 'ProfileTitlesUserModel(selected: $selected, title_id: $title_id)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ProfileTitlesUserCopyWith<$Res>  {
-  factory $ProfileTitlesUserCopyWith(ProfileTitlesUser value, $Res Function(ProfileTitlesUser) _then) = _$ProfileTitlesUserCopyWithImpl;
+abstract mixin class $ProfileTitlesUserModelCopyWith<$Res>  {
+  factory $ProfileTitlesUserModelCopyWith(ProfileTitlesUserModel value, $Res Function(ProfileTitlesUserModel) _then) = _$ProfileTitlesUserModelCopyWithImpl;
 @useResult
 $Res call({
  bool selected, int title_id
@@ -642,14 +656,14 @@ $Res call({
 
 }
 /// @nodoc
-class _$ProfileTitlesUserCopyWithImpl<$Res>
-    implements $ProfileTitlesUserCopyWith<$Res> {
-  _$ProfileTitlesUserCopyWithImpl(this._self, this._then);
+class _$ProfileTitlesUserModelCopyWithImpl<$Res>
+    implements $ProfileTitlesUserModelCopyWith<$Res> {
+  _$ProfileTitlesUserModelCopyWithImpl(this._self, this._then);
 
-  final ProfileTitlesUser _self;
-  final $Res Function(ProfileTitlesUser) _then;
+  final ProfileTitlesUserModel _self;
+  final $Res Function(ProfileTitlesUserModel) _then;
 
-/// Create a copy of ProfileTitlesUser
+/// Create a copy of ProfileTitlesUserModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? selected = null,Object? title_id = null,}) {
   return _then(_self.copyWith(
@@ -662,8 +676,8 @@ as int,
 }
 
 
-/// Adds pattern-matching-related methods to [ProfileTitlesUser].
-extension ProfileTitlesUserPatterns on ProfileTitlesUser {
+/// Adds pattern-matching-related methods to [ProfileTitlesUserModel].
+extension ProfileTitlesUserModelPatterns on ProfileTitlesUserModel {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -795,14 +809,14 @@ return $default(_that.selected,_that.title_id);case _:
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _ProfileTitlesUser implements ProfileTitlesUser {
+class _ProfileTitlesUser implements ProfileTitlesUserModel {
   const _ProfileTitlesUser({required this.selected, required this.title_id});
   factory _ProfileTitlesUser.fromJson(Map<String, dynamic> json) => _$ProfileTitlesUserFromJson(json);
 
 @override final  bool selected;
 @override final  int title_id;
 
-/// Create a copy of ProfileTitlesUser
+/// Create a copy of ProfileTitlesUserModel
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -824,14 +838,14 @@ int get hashCode => Object.hash(runtimeType,selected,title_id);
 
 @override
 String toString() {
-  return 'ProfileTitlesUser(selected: $selected, title_id: $title_id)';
+  return 'ProfileTitlesUserModel(selected: $selected, title_id: $title_id)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ProfileTitlesUserCopyWith<$Res> implements $ProfileTitlesUserCopyWith<$Res> {
+abstract mixin class _$ProfileTitlesUserCopyWith<$Res> implements $ProfileTitlesUserModelCopyWith<$Res> {
   factory _$ProfileTitlesUserCopyWith(_ProfileTitlesUser value, $Res Function(_ProfileTitlesUser) _then) = __$ProfileTitlesUserCopyWithImpl;
 @override @useResult
 $Res call({
@@ -850,7 +864,7 @@ class __$ProfileTitlesUserCopyWithImpl<$Res>
   final _ProfileTitlesUser _self;
   final $Res Function(_ProfileTitlesUser) _then;
 
-/// Create a copy of ProfileTitlesUser
+/// Create a copy of ProfileTitlesUserModel
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? selected = null,Object? title_id = null,}) {
   return _then(_ProfileTitlesUser(

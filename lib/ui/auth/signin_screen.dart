@@ -14,6 +14,15 @@ class SigninScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final authRepository = ref.watch(authRepositoryProvider);
+    final url = authRepository.getSigninUrl();
+    if (url == null) {
+      WidgetsBinding.instance.addPostFrameCallback((ctx) {
+        this.logger.i('user already signed in, redirecting to profile');
+        context.goNamed('profile');
+      });
+
+      return Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
 
     return Scaffold(
       appBar: AppBar(title: const Text('Sign in to intra')),
@@ -24,11 +33,6 @@ class SigninScreen extends ConsumerWidget {
             FilledButton(
               onPressed: () async {
                 try {
-                  final url = authRepository.getSigninUrl();
-                  if (url == null) {
-                    context.pushNamed('profile');
-                    return;
-                  }
                   if (!await launchUrl(url)) {
                     throw Exception('Could not launch $url');
                   }
