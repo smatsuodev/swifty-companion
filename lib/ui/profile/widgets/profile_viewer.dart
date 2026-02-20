@@ -49,44 +49,52 @@ class ProfileViewer extends HookConsumerWidget {
         mainAxisAlignment: .center,
         spacing: 8.0,
         children: [
-          CircleAvatar(
-            radius: mediaQuery.size.width * 0.15,
-            backgroundImage: NetworkImage(profile.image.link),
-          ),
-          Column(
-            children: [
-              Text(profile.displayName, style: TextStyle(fontSize: 24)),
-              Text(
-                selectedTitle ?? profile.login,
-                style: TextStyle(fontSize: 14),
-              ),
-            ],
-          ),
-          SizedBox(
-            width: mediaQuery.size.width * 0.75,
+          Expanded(
+            flex: 1,
             child: Column(
+              mainAxisAlignment: .end,
               children: [
-                LevelIndicator(
-                  cursusUsers: profile.cursusUsers,
-                  cursusSlug: cursusSlug.value,
-                  onCursusChanged: (slug) {
-                    this.logger.d('Cursus changed: $slug');
-                    cursusSlug.value = slug;
-                  },
+                CircleAvatar(
+                  radius: mediaQuery.size.width * 0.15,
+                  backgroundImage: NetworkImage(profile.image.link),
+                ),
+                Column(
+                  children: [
+                    Text(profile.displayName, style: TextStyle(fontSize: 24)),
+                    Text(
+                      selectedTitle ?? profile.login,
+                      style: TextStyle(fontSize: 14),
+                    ),
+                  ],
                 ),
                 SizedBox(
-                  height: 40,
-                  child: Row(
-                    mainAxisAlignment: .spaceEvenly,
-                    crossAxisAlignment: .center,
+                  width: mediaQuery.size.width * 0.75,
+                  child: Column(
                     children: [
-                      _ProfileMetric(
-                        label: '₳',
-                        value: profile.wallet.toString(),
+                      LevelIndicator(
+                        cursusUsers: profile.cursusUsers,
+                        cursusSlug: cursusSlug.value,
+                        onCursusChanged: (slug) {
+                          this.logger.d('Cursus changed: $slug');
+                          cursusSlug.value = slug;
+                        },
                       ),
-                      _ProfileMetric(
-                        label: 'Ev.P',
-                        value: profile.correctionPoint.toString(),
+                      SizedBox(
+                        height: 40,
+                        child: Row(
+                          mainAxisAlignment: .spaceEvenly,
+                          crossAxisAlignment: .center,
+                          children: [
+                            _ProfileMetric(
+                              label: '₳',
+                              value: profile.wallet.toString(),
+                            ),
+                            _ProfileMetric(
+                              label: 'Ev.P',
+                              value: profile.correctionPoint.toString(),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -94,15 +102,23 @@ class ProfileViewer extends HookConsumerWidget {
               ],
             ),
           ),
-          if (cursusUser != null)
-            AspectRatio(
-              aspectRatio: 1.8,
-              child: SkillChart(
-                cursusSlug: cursusUser.cursus.slug,
-                skills: cursusUser.skills,
-              ),
+          Expanded(
+            child: TabBarView(
+              children: [
+                if (cursusUser != null)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 64),
+                    child: SkillChart(
+                      cursusSlug: cursusUser.cursus.slug,
+                      skills: cursusUser.skills,
+                    ),
+                  )
+                else
+                  Text('No skills acquired yet.'),
+                ProjectsListView(projectUsers: completedProjects),
+              ],
             ),
-          Expanded(child: ProjectsListView(projectUsers: completedProjects)),
+          ),
         ],
       ),
     );

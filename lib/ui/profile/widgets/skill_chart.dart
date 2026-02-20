@@ -45,7 +45,7 @@ class SkillChart extends StatelessWidget {
       axes: [
         Defaults.circularAxis
           ..label = LabelStyle(
-            maxWidth: 100,
+            maxWidth: 80,
             textAlign: .center,
             span: (text) => TextSpan(
               children: [

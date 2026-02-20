@@ -21,35 +21,46 @@ class ProfileScreen extends HookConsumerWidget {
           ref.watch(authRepositoryProvider).signOut();
         }
       },
-      child: Scaffold(
-        appBar: AppBar(),
-        body: Center(
-          child: FutureBuilder(
-            future: ref.watch(profileRepositoryProvider).fetchProfile(),
-            builder: (context, asyncSnapshot) {
-              if (asyncSnapshot.connectionState == .waiting) {
-                return const CircularProgressIndicator();
-              } else if (asyncSnapshot.hasError) {
-                if (asyncSnapshot.error is UnauthorizedException) {
-                  Fluttertoast.showToast(
-                    msg: 'Session expired. Please sign in again.',
+      child: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(),
+          bottomNavigationBar: TabBar(
+            tabs: [
+              Tab(text: 'Skills', icon: Icon(Icons.psychology)),
+              Tab(text: 'Projects', icon: Icon(Icons.assignment_turned_in)),
+            ],
+          ),
+          body: Center(
+            child: FutureBuilder(
+              future: ref.watch(profileRepositoryProvider).fetchProfile(),
+              builder: (context, asyncSnapshot) {
+                if (asyncSnapshot.connectionState == .waiting) {
+                  return const CircularProgressIndicator();
+                } else if (asyncSnapshot.hasError) {
+                  if (asyncSnapshot.error is UnauthorizedException) {
+                    Fluttertoast.showToast(
+                      msg: 'Session expired. Please sign in again.',
+                    );
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      ref.watch(authRepositoryProvider).signOut();
+                      context.goNamed('home');
+                    });
+                  }
+                  this.logger.e(
+                    'failed to load profile: ${asyncSnapshot.error}',
                   );
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    ref.watch(authRepositoryProvider).signOut();
-                    context.goNamed('home');
-                  });
+                  return Text('Error: ${asyncSnapshot.error}');
                 }
-                this.logger.e('failed to load profile: ${asyncSnapshot.error}');
-                return Text('Error: ${asyncSnapshot.error}');
-              }
 
-              final profile = asyncSnapshot.data;
-              if (profile == null) {
-                return const Text('No profile data available');
-              }
+                final profile = asyncSnapshot.data;
+                if (profile == null) {
+                  return const Text('No profile data available');
+                }
 
-              return ProfileViewer(profile: profile);
-            },
+                return ProfileViewer(profile: profile);
+              },
+            ),
           ),
         ),
       ),
