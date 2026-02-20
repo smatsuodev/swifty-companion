@@ -32,8 +32,11 @@ abstract class CursusUserSkillModel with _$CursusUserSkillModel {
 @freezed
 abstract class CursusModel with _$CursusModel {
   @JsonSerializable(explicitToJson: true)
-  const factory CursusModel({required String name, required String slug}) =
-      _CursusModel;
+  const factory CursusModel({
+    required int id,
+    required String name,
+    required String slug,
+  }) = _CursusModel;
 
   factory CursusModel.fromJson(Map<String, Object?> json) =>
       _$CursusModelFromJson(json);

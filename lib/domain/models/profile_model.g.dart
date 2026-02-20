@@ -24,6 +24,9 @@ _ProfileModel _$ProfileModelFromJson(Map<String, dynamic> json) =>
       titles: (json['titles'] as List<dynamic>)
           .map((e) => ProfileTitleModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      projectsUsers: (json['projects_users'] as List<dynamic>)
+          .map((e) => ProjectUserModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ProfileModelToJson(_ProfileModel instance) =>
@@ -36,6 +39,7 @@ Map<String, dynamic> _$ProfileModelToJson(_ProfileModel instance) =>
       'correction_point': instance.correctionPoint,
       'titles_users': instance.titlesUsers.map((e) => e.toJson()).toList(),
       'titles': instance.titles.map((e) => e.toJson()).toList(),
+      'projects_users': instance.projectsUsers.map((e) => e.toJson()).toList(),
     };
 
 _ProfileTitle _$ProfileTitleFromJson(Map<String, dynamic> json) =>

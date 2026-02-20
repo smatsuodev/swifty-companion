@@ -577,7 +577,7 @@ as double,
 /// @nodoc
 mixin _$CursusModel {
 
- String get name; String get slug;
+ int get id; String get name; String get slug;
 /// Create a copy of CursusModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -590,16 +590,16 @@ $CursusModelCopyWith<CursusModel> get copyWith => _$CursusModelCopyWithImpl<Curs
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CursusModel&&(identical(other.name, name) || other.name == name)&&(identical(other.slug, slug) || other.slug == slug));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CursusModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.slug, slug) || other.slug == slug));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,slug);
+int get hashCode => Object.hash(runtimeType,id,name,slug);
 
 @override
 String toString() {
-  return 'CursusModel(name: $name, slug: $slug)';
+  return 'CursusModel(id: $id, name: $name, slug: $slug)';
 }
 
 
@@ -610,7 +610,7 @@ abstract mixin class $CursusModelCopyWith<$Res>  {
   factory $CursusModelCopyWith(CursusModel value, $Res Function(CursusModel) _then) = _$CursusModelCopyWithImpl;
 @useResult
 $Res call({
- String name, String slug
+ int id, String name, String slug
 });
 
 
@@ -627,9 +627,10 @@ class _$CursusModelCopyWithImpl<$Res>
 
 /// Create a copy of CursusModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? slug = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? slug = null,}) {
   return _then(_self.copyWith(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,slug: null == slug ? _self.slug : slug // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -716,10 +717,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String slug)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String slug)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CursusModel() when $default != null:
-return $default(_that.name,_that.slug);case _:
+return $default(_that.id,_that.name,_that.slug);case _:
   return orElse();
 
 }
@@ -737,10 +738,10 @@ return $default(_that.name,_that.slug);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String slug)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String slug)  $default,) {final _that = this;
 switch (_that) {
 case _CursusModel():
-return $default(_that.name,_that.slug);case _:
+return $default(_that.id,_that.name,_that.slug);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -757,10 +758,10 @@ return $default(_that.name,_that.slug);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String slug)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String slug)?  $default,) {final _that = this;
 switch (_that) {
 case _CursusModel() when $default != null:
-return $default(_that.name,_that.slug);case _:
+return $default(_that.id,_that.name,_that.slug);case _:
   return null;
 
 }
@@ -772,9 +773,10 @@ return $default(_that.name,_that.slug);case _:
 
 @JsonSerializable(explicitToJson: true)
 class _CursusModel implements CursusModel {
-  const _CursusModel({required this.name, required this.slug});
+  const _CursusModel({required this.id, required this.name, required this.slug});
   factory _CursusModel.fromJson(Map<String, dynamic> json) => _$CursusModelFromJson(json);
 
+@override final  int id;
 @override final  String name;
 @override final  String slug;
 
@@ -791,16 +793,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CursusModel&&(identical(other.name, name) || other.name == name)&&(identical(other.slug, slug) || other.slug == slug));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CursusModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.slug, slug) || other.slug == slug));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,slug);
+int get hashCode => Object.hash(runtimeType,id,name,slug);
 
 @override
 String toString() {
-  return 'CursusModel(name: $name, slug: $slug)';
+  return 'CursusModel(id: $id, name: $name, slug: $slug)';
 }
 
 
@@ -811,7 +813,7 @@ abstract mixin class _$CursusModelCopyWith<$Res> implements $CursusModelCopyWith
   factory _$CursusModelCopyWith(_CursusModel value, $Res Function(_CursusModel) _then) = __$CursusModelCopyWithImpl;
 @override @useResult
 $Res call({
- String name, String slug
+ int id, String name, String slug
 });
 
 
@@ -828,9 +830,10 @@ class __$CursusModelCopyWithImpl<$Res>
 
 /// Create a copy of CursusModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? slug = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? slug = null,}) {
   return _then(_CursusModel(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,slug: null == slug ? _self.slug : slug // ignore: cast_nullable_to_non_nullable
 as String,
   ));

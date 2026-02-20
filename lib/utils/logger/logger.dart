@@ -1,4 +1,4 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -7,7 +7,12 @@ part 'logger.g.dart';
 @riverpod
 Logger logger(Ref ref) => Logger(printer: _LogoutOutputWithTag('AppLogger'));
 
-extension LoggerForConsumerStatefulWidgetExt on ConsumerStatefulWidget {
+extension LoggerForStatefulWidgetExt on StatefulWidget {
+  Logger get logger =>
+      Logger(printer: _LogoutOutputWithTag(runtimeType.toString()));
+}
+
+extension LoggerForStatelessWidgetExt on StatelessWidget {
   Logger get logger =>
       Logger(printer: _LogoutOutputWithTag(runtimeType.toString()));
 }

@@ -22,7 +22,7 @@ class ProfileScreen extends HookConsumerWidget {
         }
       },
       child: Scaffold(
-        appBar: AppBar(title: const Text('Your Profile')),
+        appBar: AppBar(),
         body: Center(
           child: FutureBuilder(
             future: ref.watch(profileRepositoryProvider).fetchProfile(),
@@ -39,6 +39,7 @@ class ProfileScreen extends HookConsumerWidget {
                     context.goNamed('home');
                   });
                 }
+                this.logger.e('failed to load profile: ${asyncSnapshot.error}');
                 return Text('Error: ${asyncSnapshot.error}');
               }
 

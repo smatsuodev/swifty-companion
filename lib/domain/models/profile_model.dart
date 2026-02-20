@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:swifty_companion/domain/models/cursus_user_model.dart';
+import 'package:swifty_companion/domain/models/project_user_model.dart';
 
 part 'profile_model.freezed.dart';
 part 'profile_model.g.dart';
@@ -17,6 +18,8 @@ abstract class ProfileModel with _$ProfileModel {
     @JsonKey(name: 'titles_users')
     required List<ProfileTitlesUserModel> titlesUsers,
     required List<ProfileTitleModel> titles,
+    @JsonKey(name: 'projects_users')
+    required List<ProjectUserModel> projectsUsers,
   }) = _ProfileModel;
 
   factory ProfileModel.fromJson(Map<String, Object?> json) =>

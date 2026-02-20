@@ -38,8 +38,15 @@ Map<String, dynamic> _$CursusUserSkillModelToJson(
   'level': instance.level,
 };
 
-_CursusModel _$CursusModelFromJson(Map<String, dynamic> json) =>
-    _CursusModel(name: json['name'] as String, slug: json['slug'] as String);
+_CursusModel _$CursusModelFromJson(Map<String, dynamic> json) => _CursusModel(
+  id: (json['id'] as num).toInt(),
+  name: json['name'] as String,
+  slug: json['slug'] as String,
+);
 
 Map<String, dynamic> _$CursusModelToJson(_CursusModel instance) =>
-    <String, dynamic>{'name': instance.name, 'slug': instance.slug};
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'slug': instance.slug,
+    };
