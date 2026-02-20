@@ -48,7 +48,7 @@ class ProfileViewer extends HookConsumerWidget {
                   this.logger.d('level: ${s.level}');
                   return s.level as num;
                 },
-                scale: LinearScale(min: 0, max: 30),
+                scale: LinearScale(min: 0, max: 20, tickCount: 5),
               ),
             },
             marks: [
@@ -67,13 +67,14 @@ class ProfileViewer extends HookConsumerWidget {
             axes: [
               Defaults.circularAxis
                 ..label = LabelStyle(
+                  maxWidth: 100,
                   textAlign: .center,
                   span: (text) => TextSpan(
                     children: [
                       TextSpan(
                         text: '${text.split('\n')[0]}\n',
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 10,
                           fontWeight: .bold,
                           color: Theme.of(context).colorScheme.onSurface,
                         ),
