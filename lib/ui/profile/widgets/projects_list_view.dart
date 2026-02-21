@@ -30,7 +30,9 @@ class ProjectsListView extends StatelessWidget {
                       size:
                           Theme.of(context).textTheme.bodyMedium?.fontSize ??
                           14,
-                      color: validated ? Colors.green : Colors.red,
+                      color: validated
+                          ? Color.fromARGB(255, 92, 184, 92)
+                          : Theme.of(context).colorScheme.error,
                     ),
                   ),
                 ),
@@ -38,8 +40,9 @@ class ProjectsListView extends StatelessWidget {
                   text: projectUser.finalMark.toString(),
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: validated
-                        ? Colors.green
+                        ? Color.fromARGB(255, 92, 184, 92)
                         : Theme.of(context).colorScheme.error,
+                    fontWeight: .bold,
                   ),
                 ),
               ],

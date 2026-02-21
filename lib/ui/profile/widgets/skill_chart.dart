@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graphic/graphic.dart';
 import 'package:swifty_companion/domain/models/cursus_user_model.dart';
-import 'package:swifty_companion/utils/logger/logger.dart';
 
 class SkillChart extends StatelessWidget {
   final String cursusSlug;
@@ -16,16 +15,10 @@ class SkillChart extends StatelessWidget {
       data: skills,
       variables: {
         'name': Variable(
-          accessor: (s) {
-            this.logger.d('name: ${s.name}');
-            return '${s.name}\n${s.level.toStringAsFixed(2)}';
-          },
+          accessor: (s) => '${s.name}\n${s.level.toStringAsFixed(2)}',
         ),
         'level': Variable(
-          accessor: (s) {
-            this.logger.d('level: ${s.level}');
-            return s.level as num;
-          },
+          accessor: (s) => s.level as num,
           scale: LinearScale(min: 0, max: 20, tickCount: 5),
         ),
       },

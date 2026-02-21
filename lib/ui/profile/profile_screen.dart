@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:swifty_companion/data/repository/auth_repository.dart';
+import 'package:swifty_companion/data/repository/coalition_repository.dart';
 import 'package:swifty_companion/data/repository/profile_repository.dart';
 import 'package:swifty_companion/theme.dart';
 import 'package:swifty_companion/ui/profile/widgets/profile_viewer.dart';
@@ -42,20 +43,32 @@ class ProfileScreen extends HookConsumerWidget {
                     Fluttertoast.showToast(
                       msg: 'Session expired. Please sign in again.',
                     );
-                    WidgetsBinding.instance.addPostFrameCallback((_) {
-                      ref.watch(authRepositoryProvider).signOut();
-                      context.goNamed('home');
-                    });
+                  } else {
+                    this.logger.e(
+                      'failed to load profile: ${asyncSnapshot.error}',
+                    );
+                    Fluttertoast.showToast(
+                      msg: 'Something went wrong. Please sign in again.',
+                    );
                   }
-                  this.logger.e(
-                    'failed to load profile: ${asyncSnapshot.error}',
-                  );
-                  return Text('Error: ${asyncSnapshot.error}');
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    ref.watch(authRepositoryProvider).signOut();
+                    context.goNamed('home');
+                  });
+                  return CircularProgressIndicator();
                 }
 
                 final profile = asyncSnapshot.data;
+
                 if (profile == null) {
-                  return const Text('No profile data available');
+                  Fluttertoast.showToast(
+                    msg: 'No profile data found. Please sign in again.',
+                  );
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    ref.watch(authRepositoryProvider).signOut();
+                    context.goNamed('home');
+                  });
+                  return CircularProgressIndicator();
                 }
 
                 return ProfileViewer(profile: profile);

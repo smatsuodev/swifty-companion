@@ -5,12 +5,21 @@ final theme = ThemeData(
   colorScheme: ColorScheme.fromSeed(
     seedColor: Color.fromARGB(0xFF, 0x00, 0xBA, 0xBC),
   ),
+  appBarTheme: AppBarTheme(
+    backgroundColor: Color.fromARGB(0, 0, 0, 0),
+    elevation: 0,
+  ),
 );
 
 final darkTheme = ThemeData.dark().copyWith(
   colorScheme: ColorScheme.fromSeed(
     seedColor: Color.fromARGB(0xFF, 0x00, 0xBA, 0xBC),
     brightness: Brightness.dark,
+    error: Color.fromARGB(255, 216, 99, 111),
+  ),
+  appBarTheme: AppBarTheme(
+    backgroundColor: Color.fromARGB(0, 0, 0, 0),
+    elevation: 0,
   ),
 );
 

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CursusUserModel {
 
- double get level; CursusModel get cursus; List<CursusUserSkillModel> get skills;
+ int get id; double get level; CursusModel get cursus; List<CursusUserSkillModel> get skills;
 /// Create a copy of CursusUserModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $CursusUserModelCopyWith<CursusUserModel> get copyWith => _$CursusUserModelCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CursusUserModel&&(identical(other.level, level) || other.level == level)&&(identical(other.cursus, cursus) || other.cursus == cursus)&&const DeepCollectionEquality().equals(other.skills, skills));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CursusUserModel&&(identical(other.id, id) || other.id == id)&&(identical(other.level, level) || other.level == level)&&(identical(other.cursus, cursus) || other.cursus == cursus)&&const DeepCollectionEquality().equals(other.skills, skills));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,level,cursus,const DeepCollectionEquality().hash(skills));
+int get hashCode => Object.hash(runtimeType,id,level,cursus,const DeepCollectionEquality().hash(skills));
 
 @override
 String toString() {
-  return 'CursusUserModel(level: $level, cursus: $cursus, skills: $skills)';
+  return 'CursusUserModel(id: $id, level: $level, cursus: $cursus, skills: $skills)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $CursusUserModelCopyWith<$Res>  {
   factory $CursusUserModelCopyWith(CursusUserModel value, $Res Function(CursusUserModel) _then) = _$CursusUserModelCopyWithImpl;
 @useResult
 $Res call({
- double level, CursusModel cursus, List<CursusUserSkillModel> skills
+ int id, double level, CursusModel cursus, List<CursusUserSkillModel> skills
 });
 
 
@@ -65,9 +65,10 @@ class _$CursusUserModelCopyWithImpl<$Res>
 
 /// Create a copy of CursusUserModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? level = null,Object? cursus = null,Object? skills = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? level = null,Object? cursus = null,Object? skills = null,}) {
   return _then(_self.copyWith(
-level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
 as double,cursus: null == cursus ? _self.cursus : cursus // ignore: cast_nullable_to_non_nullable
 as CursusModel,skills: null == skills ? _self.skills : skills // ignore: cast_nullable_to_non_nullable
 as List<CursusUserSkillModel>,
@@ -164,10 +165,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double level,  CursusModel cursus,  List<CursusUserSkillModel> skills)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  double level,  CursusModel cursus,  List<CursusUserSkillModel> skills)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CursusUserModel() when $default != null:
-return $default(_that.level,_that.cursus,_that.skills);case _:
+return $default(_that.id,_that.level,_that.cursus,_that.skills);case _:
   return orElse();
 
 }
@@ -185,10 +186,10 @@ return $default(_that.level,_that.cursus,_that.skills);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double level,  CursusModel cursus,  List<CursusUserSkillModel> skills)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  double level,  CursusModel cursus,  List<CursusUserSkillModel> skills)  $default,) {final _that = this;
 switch (_that) {
 case _CursusUserModel():
-return $default(_that.level,_that.cursus,_that.skills);case _:
+return $default(_that.id,_that.level,_that.cursus,_that.skills);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -205,10 +206,10 @@ return $default(_that.level,_that.cursus,_that.skills);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double level,  CursusModel cursus,  List<CursusUserSkillModel> skills)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  double level,  CursusModel cursus,  List<CursusUserSkillModel> skills)?  $default,) {final _that = this;
 switch (_that) {
 case _CursusUserModel() when $default != null:
-return $default(_that.level,_that.cursus,_that.skills);case _:
+return $default(_that.id,_that.level,_that.cursus,_that.skills);case _:
   return null;
 
 }
@@ -220,9 +221,10 @@ return $default(_that.level,_that.cursus,_that.skills);case _:
 
 @JsonSerializable(explicitToJson: true)
 class _CursusUserModel implements CursusUserModel {
-  const _CursusUserModel({required this.level, required this.cursus, required final  List<CursusUserSkillModel> skills}): _skills = skills;
+  const _CursusUserModel({required this.id, required this.level, required this.cursus, required final  List<CursusUserSkillModel> skills}): _skills = skills;
   factory _CursusUserModel.fromJson(Map<String, dynamic> json) => _$CursusUserModelFromJson(json);
 
+@override final  int id;
 @override final  double level;
 @override final  CursusModel cursus;
  final  List<CursusUserSkillModel> _skills;
@@ -246,16 +248,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CursusUserModel&&(identical(other.level, level) || other.level == level)&&(identical(other.cursus, cursus) || other.cursus == cursus)&&const DeepCollectionEquality().equals(other._skills, _skills));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CursusUserModel&&(identical(other.id, id) || other.id == id)&&(identical(other.level, level) || other.level == level)&&(identical(other.cursus, cursus) || other.cursus == cursus)&&const DeepCollectionEquality().equals(other._skills, _skills));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,level,cursus,const DeepCollectionEquality().hash(_skills));
+int get hashCode => Object.hash(runtimeType,id,level,cursus,const DeepCollectionEquality().hash(_skills));
 
 @override
 String toString() {
-  return 'CursusUserModel(level: $level, cursus: $cursus, skills: $skills)';
+  return 'CursusUserModel(id: $id, level: $level, cursus: $cursus, skills: $skills)';
 }
 
 
@@ -266,7 +268,7 @@ abstract mixin class _$CursusUserModelCopyWith<$Res> implements $CursusUserModel
   factory _$CursusUserModelCopyWith(_CursusUserModel value, $Res Function(_CursusUserModel) _then) = __$CursusUserModelCopyWithImpl;
 @override @useResult
 $Res call({
- double level, CursusModel cursus, List<CursusUserSkillModel> skills
+ int id, double level, CursusModel cursus, List<CursusUserSkillModel> skills
 });
 
 
@@ -283,9 +285,10 @@ class __$CursusUserModelCopyWithImpl<$Res>
 
 /// Create a copy of CursusUserModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? level = null,Object? cursus = null,Object? skills = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? level = null,Object? cursus = null,Object? skills = null,}) {
   return _then(_CursusUserModel(
-level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
 as double,cursus: null == cursus ? _self.cursus : cursus // ignore: cast_nullable_to_non_nullable
 as CursusModel,skills: null == skills ? _self._skills : skills // ignore: cast_nullable_to_non_nullable
 as List<CursusUserSkillModel>,

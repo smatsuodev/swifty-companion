@@ -8,6 +8,7 @@ part of 'cursus_user_model.dart';
 
 _CursusUserModel _$CursusUserModelFromJson(Map<String, dynamic> json) =>
     _CursusUserModel(
+      id: (json['id'] as num).toInt(),
       level: (json['level'] as num).toDouble(),
       cursus: CursusModel.fromJson(json['cursus'] as Map<String, dynamic>),
       skills: (json['skills'] as List<dynamic>)
@@ -17,6 +18,7 @@ _CursusUserModel _$CursusUserModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$CursusUserModelToJson(_CursusUserModel instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'level': instance.level,
       'cursus': instance.cursus.toJson(),
       'skills': instance.skills.map((e) => e.toJson()).toList(),

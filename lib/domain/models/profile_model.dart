@@ -9,6 +9,7 @@ part 'profile_model.g.dart';
 abstract class ProfileModel with _$ProfileModel {
   @JsonSerializable(explicitToJson: true)
   const factory ProfileModel({
+    required int id,
     required String login,
     @JsonKey(name: 'displayname') required String displayName,
     required ProfileImageModel image,

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProfileModel {
 
- String get login;@JsonKey(name: 'displayname') String get displayName; ProfileImageModel get image;@JsonKey(name: 'cursus_users') List<CursusUserModel> get cursusUsers; int get wallet;@JsonKey(name: 'correction_point') int get correctionPoint;@JsonKey(name: 'titles_users') List<ProfileTitlesUserModel> get titlesUsers; List<ProfileTitleModel> get titles;@JsonKey(name: 'projects_users') List<ProjectUserModel> get projectsUsers;
+ int get id; String get login;@JsonKey(name: 'displayname') String get displayName; ProfileImageModel get image;@JsonKey(name: 'cursus_users') List<CursusUserModel> get cursusUsers; int get wallet;@JsonKey(name: 'correction_point') int get correctionPoint;@JsonKey(name: 'titles_users') List<ProfileTitlesUserModel> get titlesUsers; List<ProfileTitleModel> get titles;@JsonKey(name: 'projects_users') List<ProjectUserModel> get projectsUsers;
 /// Create a copy of ProfileModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $ProfileModelCopyWith<ProfileModel> get copyWith => _$ProfileModelCopyWithImpl<P
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileModel&&(identical(other.login, login) || other.login == login)&&(identical(other.displayName, displayName) || other.displayName == displayName)&&(identical(other.image, image) || other.image == image)&&const DeepCollectionEquality().equals(other.cursusUsers, cursusUsers)&&(identical(other.wallet, wallet) || other.wallet == wallet)&&(identical(other.correctionPoint, correctionPoint) || other.correctionPoint == correctionPoint)&&const DeepCollectionEquality().equals(other.titlesUsers, titlesUsers)&&const DeepCollectionEquality().equals(other.titles, titles)&&const DeepCollectionEquality().equals(other.projectsUsers, projectsUsers));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileModel&&(identical(other.id, id) || other.id == id)&&(identical(other.login, login) || other.login == login)&&(identical(other.displayName, displayName) || other.displayName == displayName)&&(identical(other.image, image) || other.image == image)&&const DeepCollectionEquality().equals(other.cursusUsers, cursusUsers)&&(identical(other.wallet, wallet) || other.wallet == wallet)&&(identical(other.correctionPoint, correctionPoint) || other.correctionPoint == correctionPoint)&&const DeepCollectionEquality().equals(other.titlesUsers, titlesUsers)&&const DeepCollectionEquality().equals(other.titles, titles)&&const DeepCollectionEquality().equals(other.projectsUsers, projectsUsers));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,login,displayName,image,const DeepCollectionEquality().hash(cursusUsers),wallet,correctionPoint,const DeepCollectionEquality().hash(titlesUsers),const DeepCollectionEquality().hash(titles),const DeepCollectionEquality().hash(projectsUsers));
+int get hashCode => Object.hash(runtimeType,id,login,displayName,image,const DeepCollectionEquality().hash(cursusUsers),wallet,correctionPoint,const DeepCollectionEquality().hash(titlesUsers),const DeepCollectionEquality().hash(titles),const DeepCollectionEquality().hash(projectsUsers));
 
 @override
 String toString() {
-  return 'ProfileModel(login: $login, displayName: $displayName, image: $image, cursusUsers: $cursusUsers, wallet: $wallet, correctionPoint: $correctionPoint, titlesUsers: $titlesUsers, titles: $titles, projectsUsers: $projectsUsers)';
+  return 'ProfileModel(id: $id, login: $login, displayName: $displayName, image: $image, cursusUsers: $cursusUsers, wallet: $wallet, correctionPoint: $correctionPoint, titlesUsers: $titlesUsers, titles: $titles, projectsUsers: $projectsUsers)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $ProfileModelCopyWith<$Res>  {
   factory $ProfileModelCopyWith(ProfileModel value, $Res Function(ProfileModel) _then) = _$ProfileModelCopyWithImpl;
 @useResult
 $Res call({
- String login,@JsonKey(name: 'displayname') String displayName, ProfileImageModel image,@JsonKey(name: 'cursus_users') List<CursusUserModel> cursusUsers, int wallet,@JsonKey(name: 'correction_point') int correctionPoint,@JsonKey(name: 'titles_users') List<ProfileTitlesUserModel> titlesUsers, List<ProfileTitleModel> titles,@JsonKey(name: 'projects_users') List<ProjectUserModel> projectsUsers
+ int id, String login,@JsonKey(name: 'displayname') String displayName, ProfileImageModel image,@JsonKey(name: 'cursus_users') List<CursusUserModel> cursusUsers, int wallet,@JsonKey(name: 'correction_point') int correctionPoint,@JsonKey(name: 'titles_users') List<ProfileTitlesUserModel> titlesUsers, List<ProfileTitleModel> titles,@JsonKey(name: 'projects_users') List<ProjectUserModel> projectsUsers
 });
 
 
@@ -65,9 +65,10 @@ class _$ProfileModelCopyWithImpl<$Res>
 
 /// Create a copy of ProfileModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? login = null,Object? displayName = null,Object? image = null,Object? cursusUsers = null,Object? wallet = null,Object? correctionPoint = null,Object? titlesUsers = null,Object? titles = null,Object? projectsUsers = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? login = null,Object? displayName = null,Object? image = null,Object? cursusUsers = null,Object? wallet = null,Object? correctionPoint = null,Object? titlesUsers = null,Object? titles = null,Object? projectsUsers = null,}) {
   return _then(_self.copyWith(
-login: null == login ? _self.login : login // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,login: null == login ? _self.login : login // ignore: cast_nullable_to_non_nullable
 as String,displayName: null == displayName ? _self.displayName : displayName // ignore: cast_nullable_to_non_nullable
 as String,image: null == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as ProfileImageModel,cursusUsers: null == cursusUsers ? _self.cursusUsers : cursusUsers // ignore: cast_nullable_to_non_nullable
@@ -170,10 +171,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String login, @JsonKey(name: 'displayname')  String displayName,  ProfileImageModel image, @JsonKey(name: 'cursus_users')  List<CursusUserModel> cursusUsers,  int wallet, @JsonKey(name: 'correction_point')  int correctionPoint, @JsonKey(name: 'titles_users')  List<ProfileTitlesUserModel> titlesUsers,  List<ProfileTitleModel> titles, @JsonKey(name: 'projects_users')  List<ProjectUserModel> projectsUsers)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String login, @JsonKey(name: 'displayname')  String displayName,  ProfileImageModel image, @JsonKey(name: 'cursus_users')  List<CursusUserModel> cursusUsers,  int wallet, @JsonKey(name: 'correction_point')  int correctionPoint, @JsonKey(name: 'titles_users')  List<ProfileTitlesUserModel> titlesUsers,  List<ProfileTitleModel> titles, @JsonKey(name: 'projects_users')  List<ProjectUserModel> projectsUsers)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProfileModel() when $default != null:
-return $default(_that.login,_that.displayName,_that.image,_that.cursusUsers,_that.wallet,_that.correctionPoint,_that.titlesUsers,_that.titles,_that.projectsUsers);case _:
+return $default(_that.id,_that.login,_that.displayName,_that.image,_that.cursusUsers,_that.wallet,_that.correctionPoint,_that.titlesUsers,_that.titles,_that.projectsUsers);case _:
   return orElse();
 
 }
@@ -191,10 +192,10 @@ return $default(_that.login,_that.displayName,_that.image,_that.cursusUsers,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String login, @JsonKey(name: 'displayname')  String displayName,  ProfileImageModel image, @JsonKey(name: 'cursus_users')  List<CursusUserModel> cursusUsers,  int wallet, @JsonKey(name: 'correction_point')  int correctionPoint, @JsonKey(name: 'titles_users')  List<ProfileTitlesUserModel> titlesUsers,  List<ProfileTitleModel> titles, @JsonKey(name: 'projects_users')  List<ProjectUserModel> projectsUsers)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String login, @JsonKey(name: 'displayname')  String displayName,  ProfileImageModel image, @JsonKey(name: 'cursus_users')  List<CursusUserModel> cursusUsers,  int wallet, @JsonKey(name: 'correction_point')  int correctionPoint, @JsonKey(name: 'titles_users')  List<ProfileTitlesUserModel> titlesUsers,  List<ProfileTitleModel> titles, @JsonKey(name: 'projects_users')  List<ProjectUserModel> projectsUsers)  $default,) {final _that = this;
 switch (_that) {
 case _ProfileModel():
-return $default(_that.login,_that.displayName,_that.image,_that.cursusUsers,_that.wallet,_that.correctionPoint,_that.titlesUsers,_that.titles,_that.projectsUsers);case _:
+return $default(_that.id,_that.login,_that.displayName,_that.image,_that.cursusUsers,_that.wallet,_that.correctionPoint,_that.titlesUsers,_that.titles,_that.projectsUsers);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -211,10 +212,10 @@ return $default(_that.login,_that.displayName,_that.image,_that.cursusUsers,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String login, @JsonKey(name: 'displayname')  String displayName,  ProfileImageModel image, @JsonKey(name: 'cursus_users')  List<CursusUserModel> cursusUsers,  int wallet, @JsonKey(name: 'correction_point')  int correctionPoint, @JsonKey(name: 'titles_users')  List<ProfileTitlesUserModel> titlesUsers,  List<ProfileTitleModel> titles, @JsonKey(name: 'projects_users')  List<ProjectUserModel> projectsUsers)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String login, @JsonKey(name: 'displayname')  String displayName,  ProfileImageModel image, @JsonKey(name: 'cursus_users')  List<CursusUserModel> cursusUsers,  int wallet, @JsonKey(name: 'correction_point')  int correctionPoint, @JsonKey(name: 'titles_users')  List<ProfileTitlesUserModel> titlesUsers,  List<ProfileTitleModel> titles, @JsonKey(name: 'projects_users')  List<ProjectUserModel> projectsUsers)?  $default,) {final _that = this;
 switch (_that) {
 case _ProfileModel() when $default != null:
-return $default(_that.login,_that.displayName,_that.image,_that.cursusUsers,_that.wallet,_that.correctionPoint,_that.titlesUsers,_that.titles,_that.projectsUsers);case _:
+return $default(_that.id,_that.login,_that.displayName,_that.image,_that.cursusUsers,_that.wallet,_that.correctionPoint,_that.titlesUsers,_that.titles,_that.projectsUsers);case _:
   return null;
 
 }
@@ -226,9 +227,10 @@ return $default(_that.login,_that.displayName,_that.image,_that.cursusUsers,_tha
 
 @JsonSerializable(explicitToJson: true)
 class _ProfileModel implements ProfileModel {
-  const _ProfileModel({required this.login, @JsonKey(name: 'displayname') required this.displayName, required this.image, @JsonKey(name: 'cursus_users') required final  List<CursusUserModel> cursusUsers, required this.wallet, @JsonKey(name: 'correction_point') required this.correctionPoint, @JsonKey(name: 'titles_users') required final  List<ProfileTitlesUserModel> titlesUsers, required final  List<ProfileTitleModel> titles, @JsonKey(name: 'projects_users') required final  List<ProjectUserModel> projectsUsers}): _cursusUsers = cursusUsers,_titlesUsers = titlesUsers,_titles = titles,_projectsUsers = projectsUsers;
+  const _ProfileModel({required this.id, required this.login, @JsonKey(name: 'displayname') required this.displayName, required this.image, @JsonKey(name: 'cursus_users') required final  List<CursusUserModel> cursusUsers, required this.wallet, @JsonKey(name: 'correction_point') required this.correctionPoint, @JsonKey(name: 'titles_users') required final  List<ProfileTitlesUserModel> titlesUsers, required final  List<ProfileTitleModel> titles, @JsonKey(name: 'projects_users') required final  List<ProjectUserModel> projectsUsers}): _cursusUsers = cursusUsers,_titlesUsers = titlesUsers,_titles = titles,_projectsUsers = projectsUsers;
   factory _ProfileModel.fromJson(Map<String, dynamic> json) => _$ProfileModelFromJson(json);
 
+@override final  int id;
 @override final  String login;
 @override@JsonKey(name: 'displayname') final  String displayName;
 @override final  ProfileImageModel image;
@@ -276,16 +278,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileModel&&(identical(other.login, login) || other.login == login)&&(identical(other.displayName, displayName) || other.displayName == displayName)&&(identical(other.image, image) || other.image == image)&&const DeepCollectionEquality().equals(other._cursusUsers, _cursusUsers)&&(identical(other.wallet, wallet) || other.wallet == wallet)&&(identical(other.correctionPoint, correctionPoint) || other.correctionPoint == correctionPoint)&&const DeepCollectionEquality().equals(other._titlesUsers, _titlesUsers)&&const DeepCollectionEquality().equals(other._titles, _titles)&&const DeepCollectionEquality().equals(other._projectsUsers, _projectsUsers));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileModel&&(identical(other.id, id) || other.id == id)&&(identical(other.login, login) || other.login == login)&&(identical(other.displayName, displayName) || other.displayName == displayName)&&(identical(other.image, image) || other.image == image)&&const DeepCollectionEquality().equals(other._cursusUsers, _cursusUsers)&&(identical(other.wallet, wallet) || other.wallet == wallet)&&(identical(other.correctionPoint, correctionPoint) || other.correctionPoint == correctionPoint)&&const DeepCollectionEquality().equals(other._titlesUsers, _titlesUsers)&&const DeepCollectionEquality().equals(other._titles, _titles)&&const DeepCollectionEquality().equals(other._projectsUsers, _projectsUsers));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,login,displayName,image,const DeepCollectionEquality().hash(_cursusUsers),wallet,correctionPoint,const DeepCollectionEquality().hash(_titlesUsers),const DeepCollectionEquality().hash(_titles),const DeepCollectionEquality().hash(_projectsUsers));
+int get hashCode => Object.hash(runtimeType,id,login,displayName,image,const DeepCollectionEquality().hash(_cursusUsers),wallet,correctionPoint,const DeepCollectionEquality().hash(_titlesUsers),const DeepCollectionEquality().hash(_titles),const DeepCollectionEquality().hash(_projectsUsers));
 
 @override
 String toString() {
-  return 'ProfileModel(login: $login, displayName: $displayName, image: $image, cursusUsers: $cursusUsers, wallet: $wallet, correctionPoint: $correctionPoint, titlesUsers: $titlesUsers, titles: $titles, projectsUsers: $projectsUsers)';
+  return 'ProfileModel(id: $id, login: $login, displayName: $displayName, image: $image, cursusUsers: $cursusUsers, wallet: $wallet, correctionPoint: $correctionPoint, titlesUsers: $titlesUsers, titles: $titles, projectsUsers: $projectsUsers)';
 }
 
 
@@ -296,7 +298,7 @@ abstract mixin class _$ProfileModelCopyWith<$Res> implements $ProfileModelCopyWi
   factory _$ProfileModelCopyWith(_ProfileModel value, $Res Function(_ProfileModel) _then) = __$ProfileModelCopyWithImpl;
 @override @useResult
 $Res call({
- String login,@JsonKey(name: 'displayname') String displayName, ProfileImageModel image,@JsonKey(name: 'cursus_users') List<CursusUserModel> cursusUsers, int wallet,@JsonKey(name: 'correction_point') int correctionPoint,@JsonKey(name: 'titles_users') List<ProfileTitlesUserModel> titlesUsers, List<ProfileTitleModel> titles,@JsonKey(name: 'projects_users') List<ProjectUserModel> projectsUsers
+ int id, String login,@JsonKey(name: 'displayname') String displayName, ProfileImageModel image,@JsonKey(name: 'cursus_users') List<CursusUserModel> cursusUsers, int wallet,@JsonKey(name: 'correction_point') int correctionPoint,@JsonKey(name: 'titles_users') List<ProfileTitlesUserModel> titlesUsers, List<ProfileTitleModel> titles,@JsonKey(name: 'projects_users') List<ProjectUserModel> projectsUsers
 });
 
 
@@ -313,9 +315,10 @@ class __$ProfileModelCopyWithImpl<$Res>
 
 /// Create a copy of ProfileModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? login = null,Object? displayName = null,Object? image = null,Object? cursusUsers = null,Object? wallet = null,Object? correctionPoint = null,Object? titlesUsers = null,Object? titles = null,Object? projectsUsers = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? login = null,Object? displayName = null,Object? image = null,Object? cursusUsers = null,Object? wallet = null,Object? correctionPoint = null,Object? titlesUsers = null,Object? titles = null,Object? projectsUsers = null,}) {
   return _then(_ProfileModel(
-login: null == login ? _self.login : login // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,login: null == login ? _self.login : login // ignore: cast_nullable_to_non_nullable
 as String,displayName: null == displayName ? _self.displayName : displayName // ignore: cast_nullable_to_non_nullable
 as String,image: null == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as ProfileImageModel,cursusUsers: null == cursusUsers ? _self._cursusUsers : cursusUsers // ignore: cast_nullable_to_non_nullable

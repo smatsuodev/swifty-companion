@@ -44,83 +44,82 @@ class ProfileViewer extends HookConsumerWidget {
       [profile.projectsUsers, cursusId],
     );
 
-    return SafeArea(
-      child: Column(
-        mainAxisAlignment: .center,
-        spacing: 8.0,
-        children: [
-          Expanded(
-            flex: 1,
-            child: Column(
-              mainAxisAlignment: .end,
-              children: [
-                CircleAvatar(
-                  radius: mediaQuery.size.width * 0.15,
-                  backgroundImage: NetworkImage(profile.image.link),
-                ),
-                Column(
+    return Column(
+      mainAxisAlignment: .center,
+      children: [
+        Expanded(
+          child: Column(
+            mainAxisAlignment: .end,
+            children: [
+              CircleAvatar(
+                radius: mediaQuery.size.width * 0.15,
+                backgroundImage: NetworkImage(profile.image.link),
+              ),
+              Column(
+                children: [
+                  Text(
+                    profile.displayName,
+                    style: TextStyle(fontSize: 24, fontWeight: .bold),
+                  ),
+                  Text(
+                    selectedTitle ?? profile.login,
+                    style: TextStyle(fontSize: 14),
+                  ),
+                ],
+              ),
+              SizedBox(
+                width: mediaQuery.size.width * 0.75,
+                child: Column(
                   children: [
-                    Text(profile.displayName, style: TextStyle(fontSize: 24)),
-                    Text(
-                      selectedTitle ?? profile.login,
-                      style: TextStyle(fontSize: 14),
+                    LevelIndicator(
+                      cursusUsers: profile.cursusUsers,
+                      cursusSlug: cursusSlug.value,
+                      onCursusChanged: (slug) {
+                        this.logger.d('Cursus changed: $slug');
+                        cursusSlug.value = slug;
+                      },
+                    ),
+                    SizedBox(
+                      height: 40,
+                      child: Row(
+                        mainAxisAlignment: .spaceEvenly,
+                        crossAxisAlignment: .center,
+                        children: [
+                          _ProfileMetric(
+                            label: '₳',
+                            value: profile.wallet.toString(),
+                          ),
+                          _ProfileMetric(
+                            label: 'Ev.P',
+                            value: profile.correctionPoint.toString(),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-                SizedBox(
-                  width: mediaQuery.size.width * 0.75,
-                  child: Column(
-                    children: [
-                      LevelIndicator(
-                        cursusUsers: profile.cursusUsers,
-                        cursusSlug: cursusSlug.value,
-                        onCursusChanged: (slug) {
-                          this.logger.d('Cursus changed: $slug');
-                          cursusSlug.value = slug;
-                        },
-                      ),
-                      SizedBox(
-                        height: 40,
-                        child: Row(
-                          mainAxisAlignment: .spaceEvenly,
-                          crossAxisAlignment: .center,
-                          children: [
-                            _ProfileMetric(
-                              label: '₳',
-                              value: profile.wallet.toString(),
-                            ),
-                            _ProfileMetric(
-                              label: 'Ev.P',
-                              value: profile.correctionPoint.toString(),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          child: TabBarView(
+            children: [
+              if (cursusUser != null)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 64),
+                  child: SkillChart(
+                    cursusSlug: cursusUser.cursus.slug,
+                    skills: cursusUser.skills,
                   ),
-                ),
-              ],
-            ),
+                )
+              else
+                Text('No skills acquired yet.'),
+              ProjectsListView(projectUsers: completedProjects),
+            ],
           ),
-          Expanded(
-            child: TabBarView(
-              children: [
-                if (cursusUser != null)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 64),
-                    child: SkillChart(
-                      cursusSlug: cursusUser.cursus.slug,
-                      skills: cursusUser.skills,
-                    ),
-                  )
-                else
-                  Text('No skills acquired yet.'),
-                ProjectsListView(projectUsers: completedProjects),
-              ],
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

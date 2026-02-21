@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:logger/logger.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:swifty_companion/utils/logger/logger.dart';
+import 'package:http/retry.dart';
 
 part 'auth_repository.g.dart';
 
@@ -70,8 +71,17 @@ class AuthRepository {
       _logger.e('No access token found. User might not be signed in.');
       throw Exception('No access token found');
     }
+    final client = RetryClient(
+      http.Client(),
+      when: (res) => res.statusCode == 429,
+      onRetry: (req, _, retryCount) async {
+        _logger.w(
+          'Rate limit exceeded. Retrying request (attempt $retryCount): ${req.url}',
+        );
+      },
+    );
 
-    final res = await http.get(
+    final res = await client.get(
       Uri.parse('$_apiBaseUrl$uri'),
       headers: {'Authorization': 'Bearer $_accessToken'},
     );

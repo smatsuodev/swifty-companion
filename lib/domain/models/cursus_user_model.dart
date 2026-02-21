@@ -7,6 +7,7 @@ part 'cursus_user_model.g.dart';
 abstract class CursusUserModel with _$CursusUserModel {
   @JsonSerializable(explicitToJson: true)
   const factory CursusUserModel({
+    required int id,
     required double level,
     required CursusModel cursus,
     required List<CursusUserSkillModel> skills,
