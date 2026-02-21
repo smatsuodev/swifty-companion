@@ -25,7 +25,7 @@ class ProfileViewer extends HookConsumerWidget {
       (cu) => cu.cursus.slug == cursusSlug.value,
     );
     final selectedTitleId = useMemoized(
-      () => profile.titlesUsers.firstWhereOrNull((u) => u.selected)?.title_id,
+      () => profile.titlesUsers.firstWhereOrNull((u) => u.selected)?.titleId,
       [profile.titlesUsers],
     );
     final selectedTitle = useMemoized(

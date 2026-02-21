@@ -42,7 +42,7 @@ abstract class ProfileTitlesUserModel with _$ProfileTitlesUserModel {
   @JsonSerializable(explicitToJson: true)
   const factory ProfileTitlesUserModel({
     required bool selected,
-    required int title_id,
+    @JsonKey(name: 'title_id') required int titleId,
   }) = _ProfileTitlesUser;
 
   factory ProfileTitlesUserModel.fromJson(Map<String, Object?> json) =>

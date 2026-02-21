@@ -13,6 +13,275 @@ part of 'coalition_model.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
+mixin _$CoalitionModelList {
+
+ List<CoalitionModel> get coalitions;
+/// Create a copy of CoalitionModelList
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CoalitionModelListCopyWith<CoalitionModelList> get copyWith => _$CoalitionModelListCopyWithImpl<CoalitionModelList>(this as CoalitionModelList, _$identity);
+
+  /// Serializes this CoalitionModelList to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CoalitionModelList&&const DeepCollectionEquality().equals(other.coalitions, coalitions));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(coalitions));
+
+@override
+String toString() {
+  return 'CoalitionModelList(coalitions: $coalitions)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CoalitionModelListCopyWith<$Res>  {
+  factory $CoalitionModelListCopyWith(CoalitionModelList value, $Res Function(CoalitionModelList) _then) = _$CoalitionModelListCopyWithImpl;
+@useResult
+$Res call({
+ List<CoalitionModel> coalitions
+});
+
+
+
+
+}
+/// @nodoc
+class _$CoalitionModelListCopyWithImpl<$Res>
+    implements $CoalitionModelListCopyWith<$Res> {
+  _$CoalitionModelListCopyWithImpl(this._self, this._then);
+
+  final CoalitionModelList _self;
+  final $Res Function(CoalitionModelList) _then;
+
+/// Create a copy of CoalitionModelList
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? coalitions = null,}) {
+  return _then(_self.copyWith(
+coalitions: null == coalitions ? _self.coalitions : coalitions // ignore: cast_nullable_to_non_nullable
+as List<CoalitionModel>,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [CoalitionModelList].
+extension CoalitionModelListPatterns on CoalitionModelList {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CoalitionModelList value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _CoalitionModelList() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CoalitionModelList value)  $default,){
+final _that = this;
+switch (_that) {
+case _CoalitionModelList():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CoalitionModelList value)?  $default,){
+final _that = this;
+switch (_that) {
+case _CoalitionModelList() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<CoalitionModel> coalitions)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _CoalitionModelList() when $default != null:
+return $default(_that.coalitions);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<CoalitionModel> coalitions)  $default,) {final _that = this;
+switch (_that) {
+case _CoalitionModelList():
+return $default(_that.coalitions);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<CoalitionModel> coalitions)?  $default,) {final _that = this;
+switch (_that) {
+case _CoalitionModelList() when $default != null:
+return $default(_that.coalitions);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _CoalitionModelList implements CoalitionModelList {
+  const _CoalitionModelList({required final  List<CoalitionModel> coalitions}): _coalitions = coalitions;
+  factory _CoalitionModelList.fromJson(Map<String, dynamic> json) => _$CoalitionModelListFromJson(json);
+
+ final  List<CoalitionModel> _coalitions;
+@override List<CoalitionModel> get coalitions {
+  if (_coalitions is EqualUnmodifiableListView) return _coalitions;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_coalitions);
+}
+
+
+/// Create a copy of CoalitionModelList
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CoalitionModelListCopyWith<_CoalitionModelList> get copyWith => __$CoalitionModelListCopyWithImpl<_CoalitionModelList>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$CoalitionModelListToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CoalitionModelList&&const DeepCollectionEquality().equals(other._coalitions, _coalitions));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_coalitions));
+
+@override
+String toString() {
+  return 'CoalitionModelList(coalitions: $coalitions)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$CoalitionModelListCopyWith<$Res> implements $CoalitionModelListCopyWith<$Res> {
+  factory _$CoalitionModelListCopyWith(_CoalitionModelList value, $Res Function(_CoalitionModelList) _then) = __$CoalitionModelListCopyWithImpl;
+@override @useResult
+$Res call({
+ List<CoalitionModel> coalitions
+});
+
+
+
+
+}
+/// @nodoc
+class __$CoalitionModelListCopyWithImpl<$Res>
+    implements _$CoalitionModelListCopyWith<$Res> {
+  __$CoalitionModelListCopyWithImpl(this._self, this._then);
+
+  final _CoalitionModelList _self;
+  final $Res Function(_CoalitionModelList) _then;
+
+/// Create a copy of CoalitionModelList
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? coalitions = null,}) {
+  return _then(_CoalitionModelList(
+coalitions: null == coalitions ? _self._coalitions : coalitions // ignore: cast_nullable_to_non_nullable
+as List<CoalitionModel>,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
 mixin _$CoalitionModel {
 
  int get id; String get name; String get slug;@ColorFromHexConverter() Color get color;@JsonKey(name: 'user_id') int get userId;@JsonKey(name: 'image_url') String get imageUrl;

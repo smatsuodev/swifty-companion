@@ -54,7 +54,7 @@ class CoalitionRepository {
       }),
     );
 
-    this._logger.d(
+    _logger.d(
       'Fetched coalitions for user $userId: ${results.flattened.map((c) => (c.coalition.name, c.cursusSlug)).join(', ')}',
     );
     return results.flattened.toList();

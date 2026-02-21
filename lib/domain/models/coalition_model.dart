@@ -15,11 +15,11 @@ class CoalitionWithCursusSlugModel {
   });
 }
 
-@JsonSerializable(explicitToJson: true)
-class CoalitionModelList {
-  final List<CoalitionModel> coalitions;
-
-  CoalitionModelList({required this.coalitions});
+@freezed
+abstract class CoalitionModelList with _$CoalitionModelList {
+  @JsonSerializable(explicitToJson: true)
+  const factory CoalitionModelList({required List<CoalitionModel> coalitions}) =
+      _CoalitionModelList;
 
   factory CoalitionModelList.fromJson(List<dynamic> json) =>
       _$CoalitionModelListFromJson({'coalitions': json});

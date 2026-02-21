@@ -6,14 +6,14 @@ part of 'coalition_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CoalitionModelList _$CoalitionModelListFromJson(Map<String, dynamic> json) =>
-    CoalitionModelList(
+_CoalitionModelList _$CoalitionModelListFromJson(Map<String, dynamic> json) =>
+    _CoalitionModelList(
       coalitions: (json['coalitions'] as List<dynamic>)
           .map((e) => CoalitionModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$CoalitionModelListToJson(CoalitionModelList instance) =>
+Map<String, dynamic> _$CoalitionModelListToJson(_CoalitionModelList instance) =>
     <String, dynamic>{
       'coalitions': instance.coalitions.map((e) => e.toJson()).toList(),
     };

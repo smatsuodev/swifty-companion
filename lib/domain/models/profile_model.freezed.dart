@@ -627,7 +627,7 @@ ProfileTitlesUserModel _$ProfileTitlesUserModelFromJson(
 /// @nodoc
 mixin _$ProfileTitlesUserModel {
 
- bool get selected; int get title_id;
+ bool get selected;@JsonKey(name: 'title_id') int get titleId;
 /// Create a copy of ProfileTitlesUserModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -640,16 +640,16 @@ $ProfileTitlesUserModelCopyWith<ProfileTitlesUserModel> get copyWith => _$Profil
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileTitlesUserModel&&(identical(other.selected, selected) || other.selected == selected)&&(identical(other.title_id, title_id) || other.title_id == title_id));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileTitlesUserModel&&(identical(other.selected, selected) || other.selected == selected)&&(identical(other.titleId, titleId) || other.titleId == titleId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,selected,title_id);
+int get hashCode => Object.hash(runtimeType,selected,titleId);
 
 @override
 String toString() {
-  return 'ProfileTitlesUserModel(selected: $selected, title_id: $title_id)';
+  return 'ProfileTitlesUserModel(selected: $selected, titleId: $titleId)';
 }
 
 
@@ -660,7 +660,7 @@ abstract mixin class $ProfileTitlesUserModelCopyWith<$Res>  {
   factory $ProfileTitlesUserModelCopyWith(ProfileTitlesUserModel value, $Res Function(ProfileTitlesUserModel) _then) = _$ProfileTitlesUserModelCopyWithImpl;
 @useResult
 $Res call({
- bool selected, int title_id
+ bool selected,@JsonKey(name: 'title_id') int titleId
 });
 
 
@@ -677,10 +677,10 @@ class _$ProfileTitlesUserModelCopyWithImpl<$Res>
 
 /// Create a copy of ProfileTitlesUserModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? selected = null,Object? title_id = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? selected = null,Object? titleId = null,}) {
   return _then(_self.copyWith(
 selected: null == selected ? _self.selected : selected // ignore: cast_nullable_to_non_nullable
-as bool,title_id: null == title_id ? _self.title_id : title_id // ignore: cast_nullable_to_non_nullable
+as bool,titleId: null == titleId ? _self.titleId : titleId // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }
@@ -766,10 +766,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool selected,  int title_id)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool selected, @JsonKey(name: 'title_id')  int titleId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProfileTitlesUser() when $default != null:
-return $default(_that.selected,_that.title_id);case _:
+return $default(_that.selected,_that.titleId);case _:
   return orElse();
 
 }
@@ -787,10 +787,10 @@ return $default(_that.selected,_that.title_id);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool selected,  int title_id)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool selected, @JsonKey(name: 'title_id')  int titleId)  $default,) {final _that = this;
 switch (_that) {
 case _ProfileTitlesUser():
-return $default(_that.selected,_that.title_id);case _:
+return $default(_that.selected,_that.titleId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -807,10 +807,10 @@ return $default(_that.selected,_that.title_id);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool selected,  int title_id)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool selected, @JsonKey(name: 'title_id')  int titleId)?  $default,) {final _that = this;
 switch (_that) {
 case _ProfileTitlesUser() when $default != null:
-return $default(_that.selected,_that.title_id);case _:
+return $default(_that.selected,_that.titleId);case _:
   return null;
 
 }
@@ -822,11 +822,11 @@ return $default(_that.selected,_that.title_id);case _:
 
 @JsonSerializable(explicitToJson: true)
 class _ProfileTitlesUser implements ProfileTitlesUserModel {
-  const _ProfileTitlesUser({required this.selected, required this.title_id});
+  const _ProfileTitlesUser({required this.selected, @JsonKey(name: 'title_id') required this.titleId});
   factory _ProfileTitlesUser.fromJson(Map<String, dynamic> json) => _$ProfileTitlesUserFromJson(json);
 
 @override final  bool selected;
-@override final  int title_id;
+@override@JsonKey(name: 'title_id') final  int titleId;
 
 /// Create a copy of ProfileTitlesUserModel
 /// with the given fields replaced by the non-null parameter values.
@@ -841,16 +841,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileTitlesUser&&(identical(other.selected, selected) || other.selected == selected)&&(identical(other.title_id, title_id) || other.title_id == title_id));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileTitlesUser&&(identical(other.selected, selected) || other.selected == selected)&&(identical(other.titleId, titleId) || other.titleId == titleId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,selected,title_id);
+int get hashCode => Object.hash(runtimeType,selected,titleId);
 
 @override
 String toString() {
-  return 'ProfileTitlesUserModel(selected: $selected, title_id: $title_id)';
+  return 'ProfileTitlesUserModel(selected: $selected, titleId: $titleId)';
 }
 
 
@@ -861,7 +861,7 @@ abstract mixin class _$ProfileTitlesUserCopyWith<$Res> implements $ProfileTitles
   factory _$ProfileTitlesUserCopyWith(_ProfileTitlesUser value, $Res Function(_ProfileTitlesUser) _then) = __$ProfileTitlesUserCopyWithImpl;
 @override @useResult
 $Res call({
- bool selected, int title_id
+ bool selected,@JsonKey(name: 'title_id') int titleId
 });
 
 
@@ -878,10 +878,10 @@ class __$ProfileTitlesUserCopyWithImpl<$Res>
 
 /// Create a copy of ProfileTitlesUserModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? selected = null,Object? title_id = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? selected = null,Object? titleId = null,}) {
   return _then(_ProfileTitlesUser(
 selected: null == selected ? _self.selected : selected // ignore: cast_nullable_to_non_nullable
-as bool,title_id: null == title_id ? _self.title_id : title_id // ignore: cast_nullable_to_non_nullable
+as bool,titleId: null == titleId ? _self.titleId : titleId // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }

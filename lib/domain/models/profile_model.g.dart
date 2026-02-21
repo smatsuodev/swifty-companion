@@ -56,13 +56,13 @@ Map<String, dynamic> _$ProfileTitleToJson(_ProfileTitle instance) =>
 _ProfileTitlesUser _$ProfileTitlesUserFromJson(Map<String, dynamic> json) =>
     _ProfileTitlesUser(
       selected: json['selected'] as bool,
-      title_id: (json['title_id'] as num).toInt(),
+      titleId: (json['title_id'] as num).toInt(),
     );
 
 Map<String, dynamic> _$ProfileTitlesUserToJson(_ProfileTitlesUser instance) =>
     <String, dynamic>{
       'selected': instance.selected,
-      'title_id': instance.title_id,
+      'title_id': instance.titleId,
     };
 
 _ProfileImageModel _$ProfileImageModelFromJson(Map<String, dynamic> json) =>

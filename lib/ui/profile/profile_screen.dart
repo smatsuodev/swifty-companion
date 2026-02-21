@@ -4,7 +4,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:swifty_companion/data/repository/auth_repository.dart';
-import 'package:swifty_companion/data/repository/coalition_repository.dart';
 import 'package:swifty_companion/data/repository/profile_repository.dart';
 import 'package:swifty_companion/theme.dart';
 import 'package:swifty_companion/ui/profile/widgets/profile_viewer.dart';
