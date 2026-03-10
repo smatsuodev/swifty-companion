@@ -14,40 +14,62 @@ class SigninScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final authRepository = ref.watch(authRepositoryProvider);
-    final url = authRepository.getSigninUrl();
-    if (url == null) {
-      WidgetsBinding.instance.addPostFrameCallback((ctx) {
-        this.logger.i('user already signed in, redirecting to profile');
-        context.goNamed('profile');
-      });
 
-      return Scaffold(body: Center(child: CircularProgressIndicator()));
-    }
+    return FutureBuilder(
+      future: authRepository.getSigninUrl(),
+      builder: (context, asyncSnapshot) {
+        if (asyncSnapshot.connectionState == ConnectionState.waiting) {
+          return Scaffold(body: Center(child: CircularProgressIndicator()));
+        }
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('Sign in to intra')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FilledButton(
-              onPressed: () async {
-                try {
-                  if (!await launchUrl(url)) {
-                    throw Exception('Could not launch $url');
-                  }
-                } catch (e) {
-                  this.logger.e('failed to launch URL: $e');
-                  Fluttertoast.showToast(
-                    msg: 'Failed to launch browser. Please try again.',
-                  );
-                }
-              },
-              child: const Text('SIGN IN'),
+        if (asyncSnapshot.hasError) {
+          this.logger.e('failed to get signin URL: ${asyncSnapshot.error}');
+          return Scaffold(
+            body: Center(
+              child: Text(
+                'Failed to load storage. Please re-install this app.',
+              ),
             ),
-          ],
-        ),
-      ),
+          );
+        }
+
+        final url = asyncSnapshot.data;
+
+        if (url == null) {
+          WidgetsBinding.instance.addPostFrameCallback((ctx) {
+            this.logger.i('user already signed in, redirecting to profile');
+            context.goNamed('profile');
+          });
+
+          return Scaffold(body: Center(child: CircularProgressIndicator()));
+        }
+
+        return Scaffold(
+          appBar: AppBar(title: const Text('Sign in to intra')),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FilledButton(
+                  onPressed: () async {
+                    try {
+                      if (!await launchUrl(url)) {
+                        throw Exception('Could not launch $url');
+                      }
+                    } catch (e) {
+                      this.logger.e('failed to launch URL: $e');
+                      Fluttertoast.showToast(
+                        msg: 'Failed to launch browser. Please try again.',
+                      );
+                    }
+                  },
+                  child: const Text('SIGN IN'),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

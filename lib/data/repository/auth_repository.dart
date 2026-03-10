@@ -5,6 +5,7 @@ import 'package:logger/logger.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:swifty_companion/utils/logger/logger.dart';
 import 'package:http/retry.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 part 'auth_repository.g.dart';
 
@@ -17,15 +18,35 @@ class AuthRepository {
   static final _exchangeTokenUrl = Uri.parse(
     'https://api.intra.42.fr/oauth/token',
   );
-  static final _apiBaseUrl = 'https://api.intra.42.fr/v2';
-  static String? _accessToken;
-
+  static final _apiBaseUrl = 'https://api.intra.42.fr';
+  static final _redirectUri =
+      'smatsuoswiftycompanion://smatsuo.swifty.companion/oauth-granted';
+  static final storage = FlutterSecureStorage();
+  static const _accessTokenStorageKey = 'access_token';
+  static const _refreshTokenStorageKey = 'refresh_token';
+  final client = RetryClient(
+    http.Client(),
+    when: (res) => res.statusCode == 429,
+    onRetry: (req, _, retryCount) async {
+      Logger().w(
+        'Rate limit exceeded. Retrying request (attempt $retryCount): ${req.url}',
+      );
+    },
+  );
   final Logger _logger;
 
   AuthRepository(Logger logger) : _logger = logger;
 
-  Uri? getSigninUrl() {
-    if (_accessToken != null) {
+  Future<String?> get _accessToken async {
+    return await storage.read(key: _accessTokenStorageKey);
+  }
+
+  Future<String?> get _refreshToken async {
+    return await storage.read(key: _refreshTokenStorageKey);
+  }
+
+  Future<Uri?> getSigninUrl() async {
+    if (await _isAccessTokenAvailable()) {
       _logger.i('User already signed in. Skipping signin.');
       return null;
     }
@@ -33,8 +54,39 @@ class AuthRepository {
     return Uri.parse(dotenv.env['INTRA_API_AUTHORIZE_URL']!);
   }
 
+  Future<bool> _isAccessTokenAvailable() async {
+    if (await _accessToken == null) {
+      return false;
+    }
+
+    final res = await client.get(
+      Uri.parse('$_apiBaseUrl/oauth/token/info'),
+      headers: {'Authorization': 'Bearer ${await _accessToken}'},
+    );
+
+    if (res.statusCode == 200) {
+      return true;
+    }
+
+    if (res.statusCode == 401) {
+      _logger.d(
+        'Access token might be expired. Trying to refresh token: ${res.body}',
+      );
+      try {
+        await _tryRefreshAccessToken();
+        return true;
+      } catch (e) {
+        _logger.e('Failed to refresh access token: $e');
+        return false;
+      }
+    }
+
+    await signOut();
+    return false;
+  }
+
   Future<void> fetchToken(String? code) async {
-    if (_accessToken != null) {
+    if (await _isAccessTokenAvailable()) {
       _logger.i('Access token already exists. Skipping fetch.');
       return;
     }
@@ -44,7 +96,7 @@ class AuthRepository {
       throw Exception('Authorization code is null');
     }
 
-    final res = await http.post(
+    final res = await client.post(
       _exchangeTokenUrl,
       headers: {"Content-Type": "application/x-www-form-urlencoded"},
       body: {
@@ -52,8 +104,7 @@ class AuthRepository {
         'client_id': dotenv.env['INTRA_API_CLIENT_ID']!,
         'client_secret': dotenv.env['INTRA_API_CLIENT_SECRET']!,
         'code': code,
-        'redirect_uri':
-            'smatsuoswiftycompanion://smatsuo.swifty.companion/oauth-granted',
+        'redirect_uri': _redirectUri,
       },
     );
     if (res.statusCode != 200) {
@@ -61,44 +112,79 @@ class AuthRepository {
       throw Exception('Failed to fetch access token');
     }
 
-    // TODO: 永続化する
-    _accessToken = json.decode(res.body)['access_token'];
+    await storage.write(
+      key: _accessTokenStorageKey,
+      value: json.decode(res.body)['access_token'],
+    );
+    await storage.write(
+      key: _refreshTokenStorageKey,
+      value: json.decode(res.body)['refresh_token'],
+    );
+  }
+
+  Future<void> _tryRefreshAccessToken() async {
+    _logger.i(
+      'Attempting to refresh access token: refreshToken=${await _refreshToken}, accessToken=${await _accessToken}',
+    );
+    if (await _refreshToken == null) {
+      _logger.e('No refresh token found. Cannot refresh access token.');
+      throw Exception('No refresh token found');
+    }
+    final res = await client.post(
+      _exchangeTokenUrl,
+      headers: {"Content-Type": "application/x-www-form-urlencoded"},
+      body: {
+        'grant_type': 'refresh_token',
+        'client_id': dotenv.env['INTRA_API_CLIENT_ID']!,
+        'client_secret': dotenv.env['INTRA_API_CLIENT_SECRET']!,
+        'refresh_token': await _refreshToken,
+        'redirect_uri': _redirectUri,
+      },
+    );
+    if (res.statusCode != 200) {
+      _logger.e('Failed to refresh access token: ${res.body}');
+      signOut();
+      throw Exception('Failed to refresh access token');
+    }
+
+    _logger.i('Access token refreshed successfully: ${res.body}');
+
+    await storage.write(
+      key: _accessTokenStorageKey,
+      value: json.decode(res.body)['access_token'],
+    );
+    await storage.write(
+      key: _refreshTokenStorageKey,
+      value: json.decode(res.body)['refresh_token'],
+    );
   }
 
   Future<http.Response> requestAuthorizedData(String uri) async {
-    _logger.d('accessToken: $_accessToken');
-    if (_accessToken == null) {
+    _logger.d('accessToken: ${await _accessToken}');
+    if (!await _isAccessTokenAvailable()) {
       _logger.e('No access token found. User might not be signed in.');
       throw Exception('No access token found');
     }
-    final client = RetryClient(
-      http.Client(),
-      when: (res) => res.statusCode == 429,
-      onRetry: (req, _, retryCount) async {
-        _logger.w(
-          'Rate limit exceeded. Retrying request (attempt $retryCount): ${req.url}',
-        );
-      },
-    );
 
     final res = await client.get(
-      Uri.parse('$_apiBaseUrl$uri'),
-      headers: {'Authorization': 'Bearer $_accessToken'},
+      Uri.parse('$_apiBaseUrl/v2$uri'),
+      headers: {'Authorization': 'Bearer ${await _accessToken}'},
     );
 
     if (res.statusCode == 401) {
       _logger.e(
-        'Unauthorized request. Access token might be invalid or expired.',
+        'Unauthorized request. Access token might be invalid or expired: ${res.body}',
       );
-      _accessToken = null;
+      await signOut();
       throw UnauthorizedException('Unauthorized request');
     }
 
     return res;
   }
 
-  void signOut() {
-    _accessToken = null;
+  Future<void> signOut() async {
+    await storage.delete(key: _accessTokenStorageKey);
+    await storage.delete(key: _refreshTokenStorageKey);
   }
 }
 
